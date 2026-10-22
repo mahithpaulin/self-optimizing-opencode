@@ -1,0 +1,83 @@
+--- a/tools/search.py
++++ b/tools/search.py
+@@ -1,8 +1,9 @@
+-"""Scan optimization: string paths, lstat, and cached split lines.
++"""Scan validation cache: reuse the file snapshot while stats are unchanged.
+ 
+-Semantics are unchanged: the same full walk and mtime/size fingerprint are used, so
+-the cache invalidates exactly as before. This removes pathlib churn from the hot path
+-and avoids re-splitting every file for every query.
++A file content change is detected by mtime/size; an add/remove/rename is detected by
++the cached directory mtimes. On any mismatch the full walk runs and rebuilds the cache,
++so results are never served from a stale snapshot in the normal mutation cases the
++previous fingerprint caught.
+ """
+ 
+ from __future__ import annotations
+@@ -23,12 +24,16 @@
+     _CACHE.clear()
+ 
+ 
+-def _scan(root: Path, include: str | None) -> dict:
+-    root_s = os.fspath(root)
+-    key = (root_s, include)
++def _full_scan(root_s: str, include: str | None) -> dict:
+     entries: list[tuple[str, int, int, str]] = []
++    directories: list[tuple[str, int]] = []
+     for dirpath, dirnames, filenames in os.walk(root_s, followlinks=False):
+         dirnames[:] = sorted(name for name in dirnames if name not in IGNORE_DIRS)
++        try:
++            dst = os.stat(dirpath, follow_symlinks=False)
++        except OSError:
++            continue
++        directories.append((dirpath, dst.st_mtime_ns))
+         for name in sorted(filenames):
+             if include and not fnmatch.fnmatch(name, include):
+                 continue
+@@ -41,10 +46,6 @@
+                 continue
+             rel = os.path.relpath(raw, root_s).replace(os.sep, "/")
+             entries.append((rel, st.st_mtime_ns, st.st_size, raw))
+-    fingerprint = tuple((rel, mtime, size) for rel, mtime, size, _ in entries)
+-    cached = _CACHE.get(key)
+-    if cached is not None and cached["fingerprint"] == fingerprint:
+-        return cached
+     files: list[tuple[str, tuple[str, ...]]] = []
+     for rel, _mtime, _size, raw in entries:
+         try:
+@@ -55,7 +56,34 @@
+         if b"\x00" in data[:4096]:
+             continue
+         files.append((rel, tuple(data.decode("utf-8", "replace").splitlines())))
+-    record = {"fingerprint": fingerprint, "files": files}
++    return {"directories": directories, "entries": entries, "files": files}
++
++
++def _unchanged(record: dict) -> bool:
++    for path, mtime in record["directories"]:
++        try:
++            st = os.stat(path, follow_symlinks=False)
++        except OSError:
++            return False
++        if st.st_mtime_ns != mtime:
++            return False
++    for _rel, mtime, size, raw in record["entries"]:
++        try:
++            st = os.stat(raw, follow_symlinks=False)
++        except OSError:
++            return False
++        if st.st_mtime_ns != mtime or st.st_size != size:
++            return False
++    return True
++
++
++def _scan(root: Path, include: str | None) -> dict:
++    root_s = os.fspath(root)
++    key = (root_s, include)
++    cached = _CACHE.get(key)
++    if cached is not None and _unchanged(cached):
++        return cached
++    record = _full_scan(root_s, include)
+     _CACHE[key] = record
+     return record
+ 

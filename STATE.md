@@ -106,3 +106,13 @@ passing, state restore and stale-lock recovery 100%.
 - checkpoint checkpoints/ckpt-20261022T134946Z-post-E002-scan-fast.json
 - checkpoint verified True
 
+
+## 2026-10-22T13:50:05Z — E E003-scan-snapshot accepted
+
+- warm ratio 0.029 (limit 0.75)
+- cold ratio 0.0588 (limit 1.25)
+- correctness 1.0
+- tests True
+- checkpoint checkpoints/ckpt-20261022T135004Z-post-E003-scan-snapshot.json
+- checkpoint verified True
+
