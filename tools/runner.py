@@ -46,6 +46,7 @@ def _git_commit(ws: Workspace, message: str) -> dict:
         "model-host",
         "logs",
         "proposals",
+        "campaign",
         "rollback",
         "state.json",
         "state.json.bak",
@@ -197,7 +198,7 @@ def run(
                     "target": proposal["target"],
                     "checkpoint": state["last_checkpoint"],
                 }
-                state["next_task"] = "E001 accepted; review the model proposal and gate any E002."
+                state["next_task"] = f"{experiment_id} accepted; review the next gate."
                 state_mod.save_state(state, ws.root)
                 experiment.record(proposal, {"decision": decision, "promoted": promoted, "checkpoint": post}, ws.root)
                 state_mod.append_history(
@@ -234,7 +235,7 @@ def run(
                     "rollback": restored,
                     "checkpoint": state["last_checkpoint"],
                 }
-                state["next_task"] = "E001 was rejected and rolled back; inspect the negative result before trying E002."
+                state["next_task"] = f"{experiment_id} was rejected and rolled back; inspect the negative result."
                 state_mod.save_state(state, ws.root)
                 experiment.record(
                     proposal,

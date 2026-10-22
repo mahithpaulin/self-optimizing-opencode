@@ -1,0 +1,15 @@
+{
+  "title": "Reuse the scan snapshot while file/dir stats are unchanged",
+  "weakness": "Even with string paths, every query repeats the full directory walk; the corpus is unchanged across the five benchmark batches.",
+  "hypothesis": "Validating cached directory mtimes and file mtime/size, then reusing the parsed snapshot, should cut warm latency by at least 20% over E002 with no stale results.",
+  "candidate": "experiments/E003-scan-snapshot/search_candidate.py",
+  "target": "tools/search.py",
+  "acceptance": {
+    "min_correctness": 1.0,
+    "max_latency_ratio": 0.75,
+    "max_cold_ratio": 1.25
+  },
+  "risk": "Incorrect cache invalidation could return stale results; guarded by full-walk fallback on any stat mismatch and frozen correctness hashes.",
+  "reversible": true,
+  "id": "E003-scan-snapshot"
+}

@@ -1,0 +1,113 @@
+{
+  "baseline_present": true,
+  "git": {
+    "log": "5fc169b docs: finalize E001 evidence and validation notes\n7fd2188 soo: run 3 evidence log\nbc93e11 soo: run 3 checkpoint and evidence\ne12467a soo: run 2 checkpoint and evidence\n6270eb6 docs: record E001 result and V1 free-tier adapter",
+    "status": "## main...origin/main\n M config/permissions.json\n M state.json\n M state.json.bak\n M tools/runner.py\n?? campaign/\n?? experiments/E002-scan-fast/\n?? experiments/E003-scan-snapshot/\n?? tools/campaign.py",
+    "status_ok": true
+  },
+  "host": {
+    "cpu_count": 8,
+    "disk_free_mb": 33733,
+    "machine": "aarch64",
+    "mem_available_mb": 890,
+    "node": {
+      "ok": true,
+      "output": "v24.18.0"
+    },
+    "opencode_v1": {
+      "ok": false,
+      "output": "TimeoutExpired: Command '['opencode', '--version']' timed out after 10 seconds"
+    },
+    "opencode_v2": {
+      "ok": false,
+      "output": "Error: EROFS: read-only file system, mkdir '/tmp'"
+    },
+    "platform": "Android-13-aarch64-64bit",
+    "python": "3.14.6"
+  },
+  "limitations": [
+    "same-UID worker; no container or kernel namespace",
+    "network egress restricted by environment and allowlist, not a netns"
+  ],
+  "protected_hashes": {
+    "REPORT.md": "1451f7be4bf755d4734c672920601f5427a01bcbb3a304f745d418da6a77d22c",
+    "benchmarks/corpus/mod_a.py": "aca092e361dd753750a8ff9db8c09c126efe04f8368b962315898ee8b2fe5800",
+    "benchmarks/corpus/mod_b.py": "46e7c5f87e54f5c142e2d112a7d4d2690d49de98607902fb4fe4e5b3174b0ac9",
+    "benchmarks/corpus/mod_c.py": "ca0b93606c629a4129c7678805653b9bf5f648d899f78222fefdbcae7e1839f8",
+    "benchmarks/corpus/mod_d.py": "4b38e5ed2c6de270c544f5bd274ddc06e2181fd279fd72d80dde1f6792df4416",
+    "benchmarks/corpus/mod_e.py": "3188a67d87f5f5b1184ef44a1a66bbae430691da0e6c37fdcc46aec8250cc69f",
+    "benchmarks/corpus/mod_f.py": "45898428227b83ebb03856d07adac0e0a423442f8fc203c768f93b39b95d4b92",
+    "benchmarks/corpus/mod_g.py": "0576091fd5278b8f9adbce7cd7d926ca7be0fb62dda7125224d818bbe5649789",
+    "benchmarks/corpus/mod_h.py": "ba2bf80874d5ffe33f7af801619d0828d29ab748bc1c15357556a51218212489",
+    "benchmarks/corpus/mod_i.py": "01b06c9a0382ce78bf64a66a8bf27681876cb7f17cc9365cf844c8159467d0ab",
+    "benchmarks/corpus/mod_j.py": "b1da614992ba64d7aebaa161b51ed2708938b0e04e6a8eab9eac5f7a758c0129",
+    "benchmarks/expected.json": "117225a76494e93edf8711c3e9297e37d5e80cbe1a983b22ff91c6560d29b259",
+    "benchmarks/results/baseline.json": "663c6c4b20ae029280be3de9fb488dff25298818d3c3944df3c3d363250fe018",
+    "benchmarks/tasks_dev.json": "d0a6fa68280c0dac5d40fd522f0e726364d0c81420988f030f172740a1f3a46b",
+    "benchmarks/tasks_heldout.json": "84ee3f644c8f28721fd835ff59d371d695c8d1a05baf271b10db47acb8e0f01c",
+    "config/limits.json": "2aaca3491d456fd3fd32c6ddb01b375e0639dc74c7a42537ec01547ad71e9cb2",
+    "config/permissions.json": "b17d4ae3de30e8ef1d2f532a14a66aa04eeaa4f47cd2cf9d5adbe0423e240518",
+    "model-host/opencode.json": "64297293b800d26aca9d02fe65813a30b8e62676bf1b9cf62c5ae25ccbb6bbec",
+    "rollback/E001-search-index-search.py.bak": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/helpers.py": "a41d5e1b7a4aaadd501fc74b97ccfc600febfab741d6481a1e3e2525cc7787af",
+    "tests/test_bench.py": "ed4fc2811f3a5248481177d7e215bc2112630870e99c96761117b2021b08a074",
+    "tests/test_checkpoint.py": "6d246f3ee4570fc8a3effdc5c768974b6d454534099896770ebb01fbf2d9b54f",
+    "tests/test_experiment.py": "623f78600fac45582d33ab96df7bfd249ea16a64ca5692e0849d0fbed2ca7a4c",
+    "tests/test_model.py": "095ba56859a90b619f8559353a973818e8fbcbfb3bf879589976151c859f714c",
+    "tests/test_runner.py": "8c5e56d860b90839c2c0c62e996385e989996f92b4b679e85b4887ece3bf86f3",
+    "tests/test_search.py": "a2d39d6b779abdf938591523c01d2a1d8b72f0772ef718bfa8d96fddbbf84ca5",
+    "tests/test_security.py": "19a42bc1c8eed24b6385f88aa87d7afb5df825fde49a7f4c471dfc223503977a",
+    "tests/test_state.py": "ccb3cdf08d8467efdfd15239319444d6ffdcc52cb9b3e8002416ff71e8eaef1c",
+    "tools/baseline.py": "cc4c83d183270519f7f3d025c27e630e71637936348b3014bd22820a44575593",
+    "tools/bench.py": "f124c93413ebfb50216f7935b13e21e72a9543bb46933d4fe43f069f6825be15",
+    "tools/campaign.py": "a93577512f145d73bd09076599cf934a4416a022ef0a29509e80ca8c0ac7e918",
+    "tools/checkpoint.py": "5a725986e2a90950cd146b1618374e176c3cafa74402d46dd2da89d83c9eda17",
+    "tools/experiment.py": "8ff66822e6274ebe49821734f08764e00e447b0e8750730d11d1da7dcccc5467",
+    "tools/freeze.py": "e372fccaacfc71114220c87ca01538ba48bed88b81c198ee1af7984b6e98fbcd",
+    "tools/inspect.py": "ddbad21bb5aa544dd0edb905f05ae9a0e9c54869b0a531832199eb8e24a4a48d",
+    "tools/model.py": "802ceef7bfb6a9e25bceb18adc00c477a64218ef97b978b775c89fca5e4c7396",
+    "tools/modelrun": "1aeaea30213baaa062bc6e3725fe2415a3da25222021125d659b08789968eb86",
+    "tools/oc2run": "25e6035d5daa562580465599a7b04d06b2487ee8a445e3712ee28e82c0511b65",
+    "tools/runner.py": "1b4db39ed27a6ad69fa3fb5385f10eadefe02f978865c6540c328309cdab9414",
+    "tools/search_baseline.py": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+    "tools/security.py": "c9fc0dd9956c58b2a9b7c63a1442b6c80d25ad11612ed27b9cc54bf6349f187c",
+    "tools/state.py": "f89294f8c5e18a73b8aee9fea5cdc350c2201591c3e9042b74dad267e6f24708"
+  },
+  "run_id": "run-004",
+  "schema": 1,
+  "state": {
+    "completed": [
+      "E001-search-index"
+    ],
+    "current": null,
+    "failure_streak": 0,
+    "next_task": "Execute the next pending experiment, then one proposal call.",
+    "pending": [
+      "E002-scan-fast"
+    ],
+    "run_count": 4
+  },
+  "timestamp": "2026-10-22T13:49:26Z",
+  "workspace": {
+    "by_suffix": {
+      ".bak": 2,
+      ".json": 31,
+      ".jsonc": 1,
+      ".jsonl": 1,
+      ".lock": 1,
+      ".log": 1,
+      ".md": 6,
+      ".patch": 1,
+      ".py": 37,
+      ".txt": 3,
+      "<none>": 3
+    },
+    "file_count": 87,
+    "path": "/data/data/com.termux/files/home/projects/self-optimizing-opencode",
+    "test_files": 10,
+    "test_functions": 28,
+    "total_bytes": 415108,
+    "tree_hash": "c892ef3c96a9d918e6818690c7323f1dfad9a0f7419a607b358f822649869b4d"
+  }
+}

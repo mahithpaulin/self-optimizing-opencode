@@ -96,3 +96,13 @@ passing, state restore and stale-lock recovery 100%.
 - path: proposals/2026-10-22T125509Z-model.json
 - The proposal was recorded only; it was not executed.
 
+
+## 2026-10-22T13:49:46Z — E E002-scan-fast accepted
+
+- warm ratio 0.0466 (limit 0.75)
+- cold ratio 0.0477 (limit 1.25)
+- correctness 1.0
+- tests True
+- checkpoint checkpoints/ckpt-20261022T134946Z-post-E002-scan-fast.json
+- checkpoint verified True
+

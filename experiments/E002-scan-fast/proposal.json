@@ -1,0 +1,15 @@
+{
+  "title": "Remove pathlib churn from the scan hot path",
+  "weakness": "The scan walks and stats every file for every query, using pathlib and re-splitting lines; profiling shows 81% of time in _scan.",
+  "hypothesis": "String paths, lstat, and cached split lines should cut warm latency by at least 20% with identical results.",
+  "candidate": "experiments/E002-scan-fast/search_candidate.py",
+  "target": "tools/search.py",
+  "acceptance": {
+    "min_correctness": 1.0,
+    "max_latency_ratio": 0.75,
+    "max_cold_ratio": 1.25
+  },
+  "risk": "Incorrect cache invalidation could return stale results; guarded by full-walk fallback on any stat mismatch and frozen correctness hashes.",
+  "reversible": true,
+  "id": "E002-scan-fast"
+}

@@ -62,7 +62,8 @@
     "model-host/",
     "rollback/",
     "checkpoints/",
-    "REPORT.md"
+    "REPORT.md",
+    "tools/campaign.py"
   ],
   "secret_name_fragments": [
     "auth.json",
