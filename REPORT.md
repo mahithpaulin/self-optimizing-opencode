@@ -37,12 +37,16 @@ queries matching and **28/28** tests passing. The change is reversible via
 - Checkpoint before: `checkpoints/ckpt-20261022T125418Z-pre-E001-search-index.json`.
 - Checkpoint after: `checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`
   (verified).
-- Final checkpoint: `checkpoints/ckpt-20261022T125509Z-final.json` (verified).
-- Local commit: `52d7c85 soo: run 1 E001 measured result`.
+- Final runner checkpoint: `checkpoints/ckpt-20261022T130317Z-final.json` (verified);
+  later documentation-only edits are in the final commit.
+- Local commits: `52d7c85` (measured E001), `6270eb6` (docs/adapter), `bc93e11`/
+  `7fd2188` (two no-op health cycles).
+- Runs 2 and 3 were `--no-model --max-experiments 0` health cycles: no experiment, no
+  model call, no state corruption; run 3 confirmed a clean worktree and idempotent state.
 
 ## Model
 
-The proposal call succeeded in **46.36 s**, cost **$0**, and returned a valid no-op
+The one proposal call succeeded in **46.36 s**, cost **$0**, and returned a valid no-op
 proposal because E001 had already been adopted. It was recorded, not executed. The
 official V2.1.2 CLI is installed and checksum-verified, but its hosted free tier
 returns `403 FreeTierError` for this account/network. The official V1.19.3 client with

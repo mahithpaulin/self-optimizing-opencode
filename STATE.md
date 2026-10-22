@@ -1,6 +1,6 @@
 # STATE
 
-Updated: 2026-10-22T12:55:10Z (post-run, E001 accepted)
+Updated: 2026-10-22T13:03:17Z (E001 accepted; health cycles clean)
 
 ## Objective
 
@@ -51,9 +51,11 @@ passing, state restore and stale-lock recovery 100%.
 - Active backend: `tools/search.py` (indexed candidate). Rollback:
   `rollback/E001-search-index-search.py.bak`.
 - Checkpoint after: `checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`;
-  final: `checkpoints/ckpt-20261022T125509Z-final.json`.
+  final after docs: `checkpoints/ckpt-20261022T130317Z-final.json` (verified).
 - Model: one call, 46.36 s, $0, valid no-op proposal recorded; not executed.
-- Local git commit: `52d7c85 soo: run 1 E001 measured result`.
+- Runs 2 and 3 were no-model health cycles; run_count=3, no pending/failed experiments,
+  clean worktree.
+- Local commits: `52d7c85`, `6270eb6`, `bc93e11`, `7fd2188`.
 - Next task: review the proposal and gate E002; no further experiment ran.
 
 ## Known limitations
