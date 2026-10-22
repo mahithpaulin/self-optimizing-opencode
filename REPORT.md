@@ -5,8 +5,10 @@
 E001 was executed end to end and accepted. The measured warm median batch latency fell
 from **524.162 ms** to **45.759 ms** (ratio **0.0873**, limit 0.75), cold batch from
 **343.228 ms** to **45.939 ms** (ratio **0.0876**, limit 1.25), with **20/20** frozen
-queries matching and **28/28** tests passing. The change is reversible via
-`rollback/E001-search-index-search.py.bak`.
+queries matching and **28/28** tests passing. A 30-minute follow-up campaign then cut
+the steady-state median to **9.903 ms** (82.4% below the campaign start) with two more
+accepted experiments and no test regressions. The current implementation is reversible
+via `rollback/E003-scan-snapshot-search.py.bak`.
 
 ## What was built
 
@@ -37,12 +39,31 @@ queries matching and **28/28** tests passing. The change is reversible via
 - Checkpoint before: `checkpoints/ckpt-20261022T125418Z-pre-E001-search-index.json`.
 - Checkpoint after: `checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`
   (verified).
-- Final runner checkpoint: `checkpoints/ckpt-20261022T130317Z-final.json` (verified);
-  later documentation-only edits are in the final commit.
+- Final E001 runner checkpoint: `checkpoints/ckpt-20261022T130317Z-final.json` (verified).
 - Local commits: `52d7c85` (measured E001), `6270eb6` (docs/adapter), `bc93e11`/
   `7fd2188` (two no-op health cycles).
-- Runs 2 and 3 were `--no-model --max-experiments 0` health cycles: no experiment, no
-  model call, no state corruption; run 3 confirmed a clean worktree and idempotent state.
+
+## 30-minute measured campaign
+
+Run 2026-10-22T13:49:23Z–14:19:26Z with a hard 30-minute wall clock. Two candidates
+were promoted, then the active implementation was benchmarked every minute for the
+remaining time. All measurements are frozen 20-query correctness checks.
+
+| Point | Median batch | Change |
+|---|---:|---:|
+| Active at start | 56.121 ms | — |
+| E002 scan fast | 24.411 ms runner / 19.193 ms direct | 64.0% vs 53.376 ms |
+| E003 scan snapshot | 15.200 ms runner / 10.122 ms direct | 48.1% vs 19.492 ms |
+| Soak median (29 samples) | 9.903 ms | 82.4% below start |
+| Final sample | 7.777 ms | 86.1% below start |
+
+- Overall rate over 30.013 minutes: **2.74%/min** using the soak median (2.87%/min
+  using the final sample). The rate is front-loaded: 64% arrived in 21.7 s and 48% in
+  17.0 s; the rest was plateau/stability measurement.
+- Soak p95 10.887 ms; one 32.473 ms CPU-contention outlier; median stayed ~9.9 ms.
+- E002/E003 each passed 20/20 and 28/28; rollback files exist for both.
+- Campaign checkpoint: `checkpoints/ckpt-20261022T141925Z-campaign-final.json` (verified).
+- Evidence: `campaign/rate.json`, `campaign/timeline.jsonl`, `campaign/bench-*.json`.
 
 ## Model
 
@@ -60,9 +81,11 @@ used.
   `git status` and valid search succeed; invalid regex is an explicit error.
 - State restore from `.bak` and stale-lock clearing both passed.
 - Checkpoint tamper and unsafe tar member tests pass.
-- No push, deploy, publish, message, purchase, or background service was performed.
+- The runner never pushes; the repository was published manually at the user's request.
+  No deployment, message, purchase, or background service was performed.
 - The runner stops on `STOP`, free memory below 250 MB, time/iteration/model budget, or
   a failure streak of 2.
+- The 30-minute campaign slept between one-minute samples; it did not run a daemon.
 
 ## Limitations
 
@@ -74,7 +97,8 @@ used.
   to the phone's 3.7 GB RAM, so the runner's free-memory guard remains important.
 - One model call per run and a 180 s cap; model proposals are advisory only.
 - The benchmark is deliberately small and CPU-local; it proves this change, not general
-  search performance.
+  search performance. The campaign's single final 7.777 ms sample is optimistic; the
+  29-sample 9.903 ms median is the better steady-state number.
 
 ## Reproduce
 
@@ -84,5 +108,8 @@ python3 -m unittest discover -s tests -v
 python3 -m tools.runner --no-model --max-experiments 0
 cat state.json
 cat experiments/E001-search-index/result.json
+cat experiments/E002-scan-fast/result.json
+cat experiments/E003-scan-snapshot/result.json
+cat campaign/rate.json
 cat benchmarks/results/baseline.json
 ```

@@ -17,10 +17,27 @@ E001 was measured and accepted on 2026-10-22:
 | Cold batch | 343.228 ms | 45.939 ms | 0.0876 |
 | Test suite | 28/28 | 28/28 | pass |
 
-The accepted implementation is `tools/search.py`; the previous implementation is
-`rollback/E001-search-index-search.py.bak` and checkpoint
-`checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`. Full evidence is in
-`REPORT.md` and `experiments/E001-search-index/result.json`.
+The accepted implementation is `tools/search.py`. The current rollback chain is
+`rollback/E003-scan-snapshot-search.py.bak` (E002), `rollback/E002-scan-fast-search.py.bak`
+(E001), and `rollback/E001-search-index-search.py.bak` (grep). Full evidence is in
+`REPORT.md`, `campaign/rate.json`, and `experiments/*/result.json`.
+
+### 30-minute measured campaign (2026-10-22T13:49–14:19Z)
+
+| Point | Median batch | Change |
+|---|---:|---:|
+| Active at campaign start | 56.121 ms | — |
+| E002 scan fast (accepted) | 24.411 ms runner / 19.193 ms direct | 64.0% vs 53.376 ms |
+| E003 scan snapshot (accepted) | 15.200 ms runner / 10.122 ms direct | 48.1% vs 19.492 ms |
+| Soak, 29 samples | **9.903 ms** | **82.4% below start** |
+| Final sample | 7.777 ms | 86.1% below start |
+
+Both experiments were 20/20 correct with 28/28 tests. Improvement was front-loaded:
+64% in 21.7 s, then 48% in 17.0 s; the remaining 29 minutes were a stability soak.
+Overall rate over the 30.013-minute window: **2.74% per minute** using the soak median
+(2.87% using the single final sample). Soak p95 was 10.887 ms, with one 32.473 ms CPU
+outlier; median remained ~9.9 ms. Checkpoint:
+`checkpoints/ckpt-20261022T141925Z-campaign-final.json` (verified).
 
 ## Quick start
 
@@ -68,6 +85,7 @@ config/        install, model, permission and budget records
 tools/         security layer, benchmarks, runner, model adapter
 model-host/    isolated V1 config with inline proposal-only agent
 benchmarks/    fixed corpus, frozen expected hashes, baseline and results
+campaign/      measured campaign timeline, soak samples, and rate.json
 experiments/   proposals, candidates, diffs, measured outcomes, history
 tests/         automated tests (protected from the worker)
 proposals/     raw model responses
@@ -87,7 +105,7 @@ The worker is a same-UID Python process, so this is not a container. It enforces
 - an executable allowlist with argument validation, no shell, sanitized environment,
   CPU/file-size/open-file rlimits, a 30 s timeout, and process-group cleanup;
 - no repository push, deployment, publishing, messaging, purchase, background service,
-  or outbound git operation; git is local-only;
+  or outbound git operation by the runner; publishing is a separate manual action;
 - the model agent has one read-only tool because the hosted free tier rejects
   zero-tool requests; it has no write, edit, bash, network, or task tools, and its
   output is parsed as JSON but never executed automatically;

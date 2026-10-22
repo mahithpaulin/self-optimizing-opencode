@@ -1,6 +1,6 @@
 # STATE
 
-Updated: 2026-10-22T13:03:17Z (E001 accepted; health cycles clean)
+Updated: 2026-10-22T14:19:26Z (30-minute campaign complete)
 
 ## Objective
 
@@ -46,17 +46,23 @@ passing, state restore and stale-lock recovery 100%.
 
 ## Current status
 
-- E001 accepted and measured: warm 45.759 ms (0.0873x), cold 45.939 ms (0.0876x),
-  correctness 20/20, tests 28/28.
-- Active backend: `tools/search.py` (indexed candidate). Rollback:
-  `rollback/E001-search-index-search.py.bak`.
-- Checkpoint after: `checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`;
-  final after docs: `checkpoints/ckpt-20261022T130317Z-final.json` (verified).
-- Model: one call, 46.36 s, $0, valid no-op proposal recorded; not executed.
-- Runs 2 and 3 were no-model health cycles; run_count=3, no pending/failed experiments,
-  clean worktree.
-- Local commits: `52d7c85`, `6270eb6`, `bc93e11`, `7fd2188`.
-- Next task: review the proposal and gate E002; no further experiment ran.
+- E001 accepted: warm 45.759 ms (0.0873x), cold 45.939 ms (0.0876x), 20/20, 28/28.
+- E002 scan fast accepted: runner 24.411 ms (0.0466x), 20/20, 28/28; rollback
+  `rollback/E002-scan-fast-search.py.bak`.
+- E003 snapshot validation accepted: runner 15.200 ms (0.0290x warm, 0.0588x cold),
+  20/20, 28/28; rollback `rollback/E003-scan-snapshot-search.py.bak`.
+- 30-minute campaign complete: 56.121 ms at start → 9.903 ms soak median (82.4% lower)
+  → 7.777 ms final; overall 2.74%/min using the soak median. 29 soak samples, p95
+  10.887 ms, one 32.473 ms outlier. E002 delta 64.0%, E003 delta 48.1%; front-loaded.
+- Active backend: `tools/search.py` (E003). Final campaign checkpoint:
+  `checkpoints/ckpt-20261022T141925Z-campaign-final.json` (verified).
+- Model: one call, 46.36 s, $0, valid no-op proposal; not executed. run_count=5,
+  no pending/failed experiments, model_calls=1.
+- Repository is public at https://github.com/mahithpaulin/self-optimizing-opencode.
+  The runner itself never pushes; publication was manual.
+- Local commits up to the campaign: `52d7c85`, `6270eb6`, `bc93e11`, `7fd2188`,
+  `bfa4670`, `8f79e90`, `1ab4c2a`, `8dc83c1`, `af7ed74`.
+- Next task: review campaign evidence and gate E004; no further experiment ran.
 
 ## Known limitations
 
@@ -71,10 +77,13 @@ passing, state restore and stale-lock recovery 100%.
   available memory falls below 250 MB.
 - A process interrupted with SIGKILL can leave a stale lock; the next run detects and
   clears it only after confirming the PID is dead.
+- The final 7.777 ms campaign sample is optimistic; the 29-sample 9.903 ms median and
+  10.887 ms p95 are the steady-state numbers. One 32.473 ms sample was CPU contention.
 
 ## Deliberately not done
 
-- No public repository, push, deployment, paid key, or background daemon.
+- No deployment, paid key, or background daemon; the public repository already exists
+  and changes are pushed manually.
 - No modification of the existing V1 configuration or session database.
 - No V2 inference while its free tier rejects this client; no paid fallback was used.
 - No claim of general intelligence or unsupervised self-improvement.

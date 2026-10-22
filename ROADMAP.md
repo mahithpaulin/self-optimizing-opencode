@@ -20,14 +20,27 @@ cold 45.939 ms (0.0876x); 28/28 tests pass. Checkpoint
 
 **Rollback:** `rollback/E001-search-index-search.py.bak` restores the previous active backend.
 
-## E002 — failure classifier (backlog, not implemented)
+## E002 — fast scan hot path (ACCEPTED 2026-10-22)
+
+**Weakness:** profiling showed 81% of query time in `_scan`; pathlib and splitting every
+file were paid on every query. **Result:** 20/20 correct; runner 24.411 ms (direct
+19.193 ms) vs 53.376 ms immediately before; 28/28 tests. Rollback:
+`rollback/E002-scan-fast-search.py.bak`.
+
+## E003 — snapshot validation (ACCEPTED 2026-10-22)
+
+**Weakness:** the full walk repeated even when the corpus was unchanged. **Result:**
+20/20 correct; runner 15.200 ms (direct 10.122 ms) vs 19.492 ms immediately before;
+28/28 tests. Rollback: `rollback/E003-scan-snapshot-search.py.bak`.
+
+## E004 — failure classifier (backlog, not implemented)
 
 Classify test/tool failures into `permission`, `timeout`, `syntax`, `assertion`,
 `environment`, `model`, `unknown`, and verify against a labeled fixture set. Acceptance:
 >= 90% on held-out labeled failures and no change to existing tests. Not part of this
 run unless E001 completes and budget remains.
 
-## E003 — checkpoint restore drill (backlog)
+## E005 — checkpoint restore drill (backlog)
 
 Restore a checkpoint into `rollback/restore-*`, run the suite there, and record the
 verified restore rate. Never overwrite the live workspace automatically.
@@ -42,4 +55,5 @@ verified restore rate. Never overwrite the live workspace automatically.
   (`benchmarks/tasks_heldout.json`) are separate; acceptance reports both.
 - A generated file or a zero exit code is not evidence. Only the frozen correctness
   hashes, full suite result, and measured latency decide acceptance.
-- Each accepted change gets a checkpoint and a local git commit. No remote push.
+- Each accepted change gets a checkpoint and a local git commit. The runner never
+  pushes; publishing is a separate manual action.
