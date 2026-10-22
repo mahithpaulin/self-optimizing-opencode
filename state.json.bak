@@ -278,7 +278,7 @@
       45.644
     ]
   },
-  "last_checkpoint": "checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json",
+  "last_checkpoint": "checkpoints/ckpt-20261022T125509Z-final.json",
   "last_model_call": {
     "elapsed_ms": 46360.225,
     "error": null,
@@ -300,7 +300,9 @@
       "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
     }
   },
-  "last_run_started": "2026-10-22T12:54:08Z",
+  "last_run_finished": "2026-10-22T12:55:09Z",
+  "last_run_seconds": 61.18,
+  "last_run_started": "2026-10-22T13:02:41Z",
   "model_calls": 1,
   "model_proposals": [
     {
@@ -319,9 +321,9 @@
       "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
     }
   ],
-  "next_task": "E001 accepted; review the model proposal and gate any E002.",
+  "next_task": "Execute the next pending experiment, then one proposal call.",
   "pending_experiments": [],
-  "run_count": 1,
+  "run_count": 2,
   "schema": 1,
   "tests": {
     "duration_ms": 3840.801,
@@ -332,5 +334,5 @@
     "tests": 28,
     "timed_out": false
   },
-  "updated_at": "2026-10-22T12:55:09Z"
+  "updated_at": "2026-10-22T13:02:41Z"
 }

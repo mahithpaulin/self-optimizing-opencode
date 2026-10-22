@@ -309,7 +309,7 @@ def run(
         record["decisions"] = decisions
         record["checkpoint"] = {"manifest": final_checkpoint, "verify": final_verify}
         _write_run_log(ws, record)
-        commit = _git_commit(ws, f"soo: run {state['run_count']} E001 measured result")
+        commit = _git_commit(ws, f"soo: run {state['run_count']} checkpoint and evidence")
         record["git"] = commit
         _write_run_log(ws, record)
         print(
