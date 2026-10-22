@@ -1,0 +1,49 @@
+{
+  "inspected_at": "2026-10-22T12:20:00Z",
+  "device": {
+    "os": "Android",
+    "environment": "Termux",
+    "arch": "aarch64",
+    "cpu_cores": 8,
+    "ram_total_mb": 3740,
+    "ram_available_mb_at_inspection": 851,
+    "disk_free_gb": 34,
+    "persistent": true,
+    "network": true,
+    "package_install": true,
+    "root": false,
+    "user_namespaces": false,
+    "container": false,
+    "official_v2_native": false,
+    "official_v2_via_musl": true,
+    "verdict": "selected because it is the only available persistent environment and official V2 executes after a documented platform adaptation"
+  },
+  "codespaces": {
+    "name": "opencode-box-p7rv5rxjwvvcj4p",
+    "ram_gb": 7,
+    "disk_free_gb": 19,
+    "official_v2_native": true,
+    "persistent_retention": "7 days after stop",
+    "isolation": "container",
+    "quota_hours_remaining_this_month": 0,
+    "verdict": "stronger environment but blocked by the non-negotiable 5-hour quota guard; starting it would spend quota without authorization"
+  },
+  "kaggle": {
+    "gpu": "T4",
+    "quota_hours_per_week": 30,
+    "persistent": false,
+    "interactive_cli": false,
+    "verdict": "rejected; ephemeral kernels are not a resumable workspace for a CLI"
+  },
+  "github_actions": {
+    "persistent": false,
+    "shell": "ephemeral per job",
+    "verdict": "rejected for the CLI/workspace; no persistent shell and publication is not authorized"
+  },
+  "ranking_for_this_mission": [
+    "Codespaces (would win, but unavailable under the quota guard)",
+    "Termux local (winner among available)",
+    "Kaggle (ephemeral)",
+    "GitHub Actions (ephemeral, CI only)"
+  ]
+}

@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+checkpoints/
+sandbox/
+logs/runner.lock
+logs/runner.lock.stale-*
+model-host/.git/

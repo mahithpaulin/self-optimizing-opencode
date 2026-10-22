@@ -1,0 +1,930 @@
+{
+  "checkpoint": {
+    "manifest": {
+      "archive": "checkpoints/ckpt-20261022T125509Z-final.tar.gz",
+      "created_at": "2026-10-22T12:55:09Z",
+      "file_count": 71,
+      "files": [
+        ".gitignore",
+        ".opencode/agents/propose.md",
+        "ARCHITECTURE.md",
+        "README.md",
+        "ROADMAP.md",
+        "STATE.md",
+        "benchmarks/corpus/mod_a.py",
+        "benchmarks/corpus/mod_b.py",
+        "benchmarks/corpus/mod_c.py",
+        "benchmarks/corpus/mod_d.py",
+        "benchmarks/corpus/mod_e.py",
+        "benchmarks/corpus/mod_f.py",
+        "benchmarks/corpus/mod_g.py",
+        "benchmarks/corpus/mod_h.py",
+        "benchmarks/corpus/mod_i.py",
+        "benchmarks/corpus/mod_j.py",
+        "benchmarks/expected.json",
+        "benchmarks/results/baseline.json",
+        "benchmarks/tasks_dev.json",
+        "benchmarks/tasks_heldout.json",
+        "config/environments.json",
+        "config/initial_state.json",
+        "config/install.json",
+        "config/limits.json",
+        "config/model.json",
+        "config/permissions.json",
+        "experiments/E001-search-index/diff.patch",
+        "experiments/E001-search-index/proposal.json",
+        "experiments/E001-search-index/result.json",
+        "experiments/E001-search-index/search_candidate.py",
+        "experiments/history.jsonl",
+        "logs/bootstrap/v2-install.txt",
+        "logs/bootstrap/v2-model-smoke.txt",
+        "logs/bootstrap/v2-version.txt",
+        "logs/inspect-run-001.json",
+        "logs/runner.lock",
+        "model-host/.opencode/.gitignore",
+        "model-host/.opencode/agents/propose.md",
+        "model-host/opencode.json",
+        "opencode.jsonc",
+        "proposals/2026-10-22T125357Z-model.json",
+        "proposals/2026-10-22T125509Z-model.json",
+        "proposals/model-proposal-1.json",
+        "rollback/E001-search-index-search.py.bak",
+        "state.json",
+        "state.json.bak",
+        "tests/__init__.py",
+        "tests/helpers.py",
+        "tests/test_bench.py",
+        "tests/test_checkpoint.py",
+        "tests/test_experiment.py",
+        "tests/test_model.py",
+        "tests/test_runner.py",
+        "tests/test_search.py",
+        "tests/test_security.py",
+        "tests/test_state.py",
+        "tools/__init__.py",
+        "tools/baseline.py",
+        "tools/bench.py",
+        "tools/checkpoint.py",
+        "tools/experiment.py",
+        "tools/freeze.py",
+        "tools/inspect.py",
+        "tools/model.py",
+        "tools/modelrun",
+        "tools/oc2run",
+        "tools/runner.py",
+        "tools/search.py",
+        "tools/search_baseline.py",
+        "tools/security.py",
+        "tools/state.py"
+      ],
+      "label": "final",
+      "name": "ckpt-20261022T125509Z-final",
+      "schema": 1,
+      "sha256": "b62839a9d966d6a0e12a4d2e15e50355dc362e70b8d70146602f730114155683",
+      "size_bytes": 52121
+    },
+    "verify": {
+      "archive": "checkpoints/ckpt-20261022T125509Z-final.tar.gz",
+      "expected_members": 71,
+      "expected_sha256": "b62839a9d966d6a0e12a4d2e15e50355dc362e70b8d70146602f730114155683",
+      "members": 71,
+      "ok": true,
+      "sha256": "b62839a9d966d6a0e12a4d2e15e50355dc362e70b8d70146602f730114155683"
+    }
+  },
+  "decisions": [
+    {
+      "accepted": true,
+      "baseline_cold_batch_ms": 343.228,
+      "baseline_median_batch_ms": 524.162,
+      "candidate_cold_batch_ms": 45.939,
+      "candidate_median_batch_ms": 45.759,
+      "cold_ratio": 0.0876,
+      "correctness": 1.0,
+      "reasons": [],
+      "stage": "post-promotion",
+      "tests_ok": true,
+      "warm_ratio": 0.0873
+    }
+  ],
+  "errors": [],
+  "inspect": {
+    "baseline_present": true,
+    "git": {
+      "log": "",
+      "status": "## No commits yet on main\n?? .gitignore\n?? .opencode/\n?? ARCHITECTURE.md\n?? README.md\n?? ROADMAP.md\n?? STATE.md\n?? benchmarks/\n?? config/\n?? experiments/\n?? logs/\n?? model-host/\n?? opencode.jsonc\n?? proposals/\n?? state.json\n?? state.json.bak\n?? tests/\n?? tools/",
+      "status_ok": true
+    },
+    "host": {
+      "cpu_count": 8,
+      "disk_free_mb": 33835,
+      "machine": "aarch64",
+      "mem_available_mb": 1091,
+      "node": {
+        "ok": true,
+        "output": "v24.18.0"
+      },
+      "opencode_v1": {
+        "ok": false,
+        "output": "EROFS: read-only file system, mkdir '/tmp'\n    path: \"/tmp\",\n syscall: \"mkdir\",\n   errno: -30,\n    code: \"EROFS\"\n\n\nBun v1.3.14 (Linux arm64)"
+      },
+      "opencode_v2": {
+        "ok": false,
+        "output": "Error: EROFS: read-only file system, mkdir '/tmp'"
+      },
+      "platform": "Android-13-aarch64-64bit",
+      "python": "3.14.6"
+    },
+    "limitations": [
+      "same-UID worker; no container or kernel namespace",
+      "network egress restricted by environment and allowlist, not a netns"
+    ],
+    "protected_hashes": {
+      "benchmarks/expected.json": "117225a76494e93edf8711c3e9297e37d5e80cbe1a983b22ff91c6560d29b259",
+      "benchmarks/tasks_heldout.json": "84ee3f644c8f28721fd835ff59d371d695c8d1a05baf271b10db47acb8e0f01c",
+      "config/limits.json": "2aaca3491d456fd3fd32c6ddb01b375e0639dc74c7a42537ec01547ad71e9cb2",
+      "config/permissions.json": "9ac7c51ca62e77451296bf8b9023ab164b8f5c98b51c498e86bb318e4f32e318",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/helpers.py": "a41d5e1b7a4aaadd501fc74b97ccfc600febfab741d6481a1e3e2525cc7787af",
+      "tests/test_bench.py": "ed4fc2811f3a5248481177d7e215bc2112630870e99c96761117b2021b08a074",
+      "tests/test_checkpoint.py": "6d246f3ee4570fc8a3effdc5c768974b6d454534099896770ebb01fbf2d9b54f",
+      "tests/test_experiment.py": "623f78600fac45582d33ab96df7bfd249ea16a64ca5692e0849d0fbed2ca7a4c",
+      "tests/test_model.py": "095ba56859a90b619f8559353a973818e8fbcbfb3bf879589976151c859f714c",
+      "tests/test_runner.py": "8c5e56d860b90839c2c0c62e996385e989996f92b4b679e85b4887ece3bf86f3",
+      "tests/test_search.py": "a2d39d6b779abdf938591523c01d2a1d8b72f0772ef718bfa8d96fddbbf84ca5",
+      "tests/test_security.py": "19a42bc1c8eed24b6385f88aa87d7afb5df825fde49a7f4c471dfc223503977a",
+      "tests/test_state.py": "ccb3cdf08d8467efdfd15239319444d6ffdcc52cb9b3e8002416ff71e8eaef1c",
+      "tools/search_baseline.py": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+      "tools/security.py": "c9fc0dd9956c58b2a9b7c63a1442b6c80d25ad11612ed27b9cc54bf6349f187c"
+    },
+    "run_id": "run-001",
+    "schema": 1,
+    "state": {
+      "completed": [],
+      "current": null,
+      "failure_streak": 0,
+      "next_task": "Execute the next pending experiment, then one proposal call.",
+      "pending": [
+        "E001-search-index"
+      ],
+      "run_count": 1
+    },
+    "timestamp": "2026-10-22T12:54:08Z",
+    "workspace": {
+      "by_suffix": {
+        ".bak": 1,
+        ".json": 14,
+        ".jsonc": 1,
+        ".lock": 1,
+        ".md": 6,
+        ".py": 34,
+        ".txt": 3,
+        "<none>": 4
+      },
+      "file_count": 64,
+      "path": "/data/data/com.termux/files/home/projects/self-optimizing-opencode",
+      "test_files": 10,
+      "test_functions": 28,
+      "total_bytes": 142699,
+      "tree_hash": "e5de88219fd2d66f4ced964e25a23505c166af9d804cc35e6618d703cc4f48c3"
+    }
+  },
+  "schema": 1,
+  "started_at": "2026-10-22T12:54:08Z",
+  "state": {
+    "baseline_path": "benchmarks/results/baseline.json",
+    "completed_experiments": [
+      "E001-search-index"
+    ],
+    "created_at": "2026-10-22T12:54:08Z",
+    "current_experiment": null,
+    "experiments": {
+      "E001-search-index": {
+        "benchmark": {
+          "cold_batch_ms": 45.939,
+          "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+          "correct_queries": 20,
+          "correctness": 1.0,
+          "failed_queries": [],
+          "median_batch_ms": 45.759,
+          "min_batch_ms": 45.644,
+          "module": "active",
+          "p95_batch_ms": 46.765,
+          "per_query": {
+            "d01": {
+              "count": 17,
+              "ok": true,
+              "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+            },
+            "d02": {
+              "count": 2,
+              "ok": true,
+              "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+            },
+            "d03": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+            },
+            "d04": {
+              "count": 1,
+              "ok": true,
+              "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+            },
+            "d05": {
+              "count": 1,
+              "ok": true,
+              "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+            },
+            "d06": {
+              "count": 3,
+              "ok": true,
+              "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+            },
+            "d07": {
+              "count": 4,
+              "ok": true,
+              "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+            },
+            "d08": {
+              "count": 3,
+              "ok": true,
+              "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+            },
+            "d09": {
+              "count": 4,
+              "ok": true,
+              "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+            },
+            "d10": {
+              "count": 3,
+              "ok": true,
+              "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+            },
+            "d11": {
+              "count": 3,
+              "ok": true,
+              "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+            },
+            "d12": {
+              "count": 1,
+              "ok": true,
+              "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+            },
+            "d13": {
+              "count": 3,
+              "ok": true,
+              "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+            },
+            "d14": {
+              "count": 1,
+              "ok": true,
+              "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+            },
+            "d15": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+            },
+            "d16": {
+              "count": 1,
+              "ok": true,
+              "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+            },
+            "h01": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+            },
+            "h02": {
+              "count": 10,
+              "ok": true,
+              "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+            },
+            "h03": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+            },
+            "h04": {
+              "count": 3,
+              "ok": true,
+              "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+            }
+          },
+          "repetitions": 5,
+          "rss_kb": 24588,
+          "schema": 1,
+          "timestamp": "2026-10-22T12:54:22Z",
+          "total_queries": 20,
+          "warm_batches_ms": [
+            46.765,
+            45.851,
+            45.667,
+            45.644
+          ]
+        },
+        "candidate": "experiments/E001-search-index/search_candidate.py",
+        "checkpoint": "checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json",
+        "decision": {
+          "accepted": true,
+          "baseline_cold_batch_ms": 343.228,
+          "baseline_median_batch_ms": 524.162,
+          "candidate_cold_batch_ms": 45.939,
+          "candidate_median_batch_ms": 45.759,
+          "cold_ratio": 0.0876,
+          "correctness": 1.0,
+          "reasons": [],
+          "stage": "post-promotion",
+          "tests_ok": true,
+          "warm_ratio": 0.0873
+        },
+        "status": "accepted",
+        "target": "tools/search.py",
+        "tests": true
+      }
+    },
+    "failed_experiments": {},
+    "failure_streak": 0,
+    "failures": {},
+    "last_benchmark": {
+      "cold_batch_ms": 45.939,
+      "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+      "correct_queries": 20,
+      "correctness": 1.0,
+      "failed_queries": [],
+      "median_batch_ms": 45.759,
+      "min_batch_ms": 45.644,
+      "module": "active",
+      "p95_batch_ms": 46.765,
+      "per_query": {
+        "d01": {
+          "count": 17,
+          "ok": true,
+          "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+        },
+        "d02": {
+          "count": 2,
+          "ok": true,
+          "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+        },
+        "d03": {
+          "count": 4,
+          "ok": true,
+          "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+        },
+        "d04": {
+          "count": 1,
+          "ok": true,
+          "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+        },
+        "d05": {
+          "count": 1,
+          "ok": true,
+          "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+        },
+        "d06": {
+          "count": 3,
+          "ok": true,
+          "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+        },
+        "d07": {
+          "count": 4,
+          "ok": true,
+          "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+        },
+        "d08": {
+          "count": 3,
+          "ok": true,
+          "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+        },
+        "d09": {
+          "count": 4,
+          "ok": true,
+          "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+        },
+        "d10": {
+          "count": 3,
+          "ok": true,
+          "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+        },
+        "d11": {
+          "count": 3,
+          "ok": true,
+          "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+        },
+        "d12": {
+          "count": 1,
+          "ok": true,
+          "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+        },
+        "d13": {
+          "count": 3,
+          "ok": true,
+          "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+        },
+        "d14": {
+          "count": 1,
+          "ok": true,
+          "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+        },
+        "d15": {
+          "count": 2,
+          "ok": true,
+          "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+        },
+        "d16": {
+          "count": 1,
+          "ok": true,
+          "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+        },
+        "h01": {
+          "count": 4,
+          "ok": true,
+          "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+        },
+        "h02": {
+          "count": 10,
+          "ok": true,
+          "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+        },
+        "h03": {
+          "count": 2,
+          "ok": true,
+          "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+        },
+        "h04": {
+          "count": 3,
+          "ok": true,
+          "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+        }
+      },
+      "repetitions": 5,
+      "rss_kb": 24588,
+      "schema": 1,
+      "timestamp": "2026-10-22T12:54:22Z",
+      "total_queries": 20,
+      "warm_batches_ms": [
+        46.765,
+        45.851,
+        45.667,
+        45.644
+      ]
+    },
+    "last_checkpoint": "checkpoints/ckpt-20261022T125509Z-final.json",
+    "last_model_call": {
+      "elapsed_ms": 46360.225,
+      "error": null,
+      "ok": true,
+      "path": "proposals/2026-10-22T125509Z-model.json",
+      "proposal": {
+        "_raw_text": "{\"weakness\":\"Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change.\",\"hypothesis\":\"A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.\",\"metric\":\"median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...\",\"change\":\"Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.\",\"risk\":\"Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.\",\"reversible\":true,\"expected_files\":[\"search/index.py\",\"search/query.py\",\"benchmarks/bench_search.py\",\"tests/test_search_correctness.py\"]}",
+        "change": "Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.",
+        "expected_files": [
+          "search/index.py",
+          "search/query.py",
+          "benchmarks/bench_search.py",
+          "tests/test_search_correctness.py"
+        ],
+        "hypothesis": "A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.",
+        "metric": "median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...",
+        "reversible": true,
+        "risk": "Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.",
+        "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
+      }
+    },
+    "last_run_finished": "2026-10-22T12:55:09Z",
+    "last_run_seconds": 61.18,
+    "last_run_started": "2026-10-22T12:54:08Z",
+    "model_calls": 1,
+    "model_proposals": [
+      {
+        "_raw_text": "{\"weakness\":\"Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change.\",\"hypothesis\":\"A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.\",\"metric\":\"median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...\",\"change\":\"Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.\",\"risk\":\"Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.\",\"reversible\":true,\"expected_files\":[\"search/index.py\",\"search/query.py\",\"benchmarks/bench_search.py\",\"tests/test_search_correctness.py\"]}",
+        "change": "Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.",
+        "expected_files": [
+          "search/index.py",
+          "search/query.py",
+          "benchmarks/bench_search.py",
+          "tests/test_search_correctness.py"
+        ],
+        "hypothesis": "A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.",
+        "metric": "median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...",
+        "reversible": true,
+        "risk": "Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.",
+        "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
+      }
+    ],
+    "next_task": "E001 accepted; review the model proposal and gate any E002.",
+    "pending_experiments": [],
+    "run_count": 1,
+    "schema": 1,
+    "tests": {
+      "duration_ms": 3840.801,
+      "ok": true,
+      "returncode": 0,
+      "summary": "OK",
+      "tail": "test_outside_write_denied (test_security.SecurityTests.test_outside_write_denied) ... ok\ntest_protected_write_denied (test_security.SecurityTests.test_protected_write_denied) ... ok\ntest_secret_name_denied (test_security.SecurityTests.test_secret_name_denied) ... ok\ntest_symlink_escape_denied (test_security.SecurityTests.test_symlink_escape_denied) ... ok\ntest_append_history_and_state_md (test_state.StateTests.test_append_history_and_state_md) ... ok\ntest_init_save_and_recover_backup (test_state.StateTests.test_init_save_and_recover_backup) ... ok\ntest_lock_is_exclusive_and_stale_safe (test_state.StateTests.test_lock_is_exclusive_and_stale_safe) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 3.222s\n\nOK",
+      "tests": 28,
+      "timed_out": false
+    },
+    "updated_at": "2026-10-22T12:55:09Z"
+  },
+  "steps": [
+    {
+      "mem_available_mb": 1091,
+      "ok": true,
+      "step": "inspect"
+    },
+    {
+      "experiment": "E001-search-index",
+      "manifest": "checkpoints/ckpt-20261022T125418Z-pre-E001-search-index.json",
+      "step": "checkpoint",
+      "verify": {
+        "archive": "checkpoints/ckpt-20261022T125418Z-pre-E001-search-index.tar.gz",
+        "expected_members": 65,
+        "expected_sha256": "20be0407d499bade87d48827b44e9232aeb7eb6c7efcb85a69b52d1e8283f2a4",
+        "members": 65,
+        "ok": true,
+        "sha256": "20be0407d499bade87d48827b44e9232aeb7eb6c7efcb85a69b52d1e8283f2a4"
+      }
+    },
+    {
+      "experiment": "E001-search-index",
+      "result": {
+        "cold_batch_ms": 46.514,
+        "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+        "correct_queries": 20,
+        "correctness": 1.0,
+        "failed_queries": [],
+        "median_batch_ms": 46.228,
+        "min_batch_ms": 44.821,
+        "module": "experiments/E001-search-index/search_candidate.py",
+        "p95_batch_ms": 46.917,
+        "per_query": {
+          "d01": {
+            "count": 17,
+            "ok": true,
+            "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+          },
+          "d02": {
+            "count": 2,
+            "ok": true,
+            "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+          },
+          "d03": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+          },
+          "d04": {
+            "count": 1,
+            "ok": true,
+            "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+          },
+          "d05": {
+            "count": 1,
+            "ok": true,
+            "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+          },
+          "d06": {
+            "count": 3,
+            "ok": true,
+            "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+          },
+          "d07": {
+            "count": 4,
+            "ok": true,
+            "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+          },
+          "d08": {
+            "count": 3,
+            "ok": true,
+            "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+          },
+          "d09": {
+            "count": 4,
+            "ok": true,
+            "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+          },
+          "d10": {
+            "count": 3,
+            "ok": true,
+            "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+          },
+          "d11": {
+            "count": 3,
+            "ok": true,
+            "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+          },
+          "d12": {
+            "count": 1,
+            "ok": true,
+            "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+          },
+          "d13": {
+            "count": 3,
+            "ok": true,
+            "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+          },
+          "d14": {
+            "count": 1,
+            "ok": true,
+            "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+          },
+          "d15": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+          },
+          "d16": {
+            "count": 1,
+            "ok": true,
+            "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+          },
+          "h01": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+          },
+          "h02": {
+            "count": 10,
+            "ok": true,
+            "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+          },
+          "h03": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+          },
+          "h04": {
+            "count": 3,
+            "ok": true,
+            "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+          }
+        },
+        "repetitions": 5,
+        "rss_kb": 24588,
+        "schema": 1,
+        "timestamp": "2026-10-22T12:54:18Z",
+        "total_queries": 20,
+        "warm_batches_ms": [
+          46.917,
+          46.577,
+          44.821,
+          45.878
+        ]
+      },
+      "step": "candidate_bench"
+    },
+    {
+      "experiment": "E001-search-index",
+      "result": {
+        "backup": "rollback/E001-search-index-search.py.bak",
+        "candidate": "experiments/E001-search-index/search_candidate.py",
+        "diff": "experiments/E001-search-index/diff.patch",
+        "promoted": true,
+        "promoted_at": "2026-10-22T12:54:18Z",
+        "target": "tools/search.py"
+      },
+      "step": "promote"
+    },
+    {
+      "bench": {
+        "cold_batch_ms": 45.939,
+        "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+        "correct_queries": 20,
+        "correctness": 1.0,
+        "failed_queries": [],
+        "median_batch_ms": 45.759,
+        "min_batch_ms": 45.644,
+        "module": "active",
+        "p95_batch_ms": 46.765,
+        "per_query": {
+          "d01": {
+            "count": 17,
+            "ok": true,
+            "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+          },
+          "d02": {
+            "count": 2,
+            "ok": true,
+            "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+          },
+          "d03": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+          },
+          "d04": {
+            "count": 1,
+            "ok": true,
+            "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+          },
+          "d05": {
+            "count": 1,
+            "ok": true,
+            "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+          },
+          "d06": {
+            "count": 3,
+            "ok": true,
+            "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+          },
+          "d07": {
+            "count": 4,
+            "ok": true,
+            "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+          },
+          "d08": {
+            "count": 3,
+            "ok": true,
+            "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+          },
+          "d09": {
+            "count": 4,
+            "ok": true,
+            "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+          },
+          "d10": {
+            "count": 3,
+            "ok": true,
+            "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+          },
+          "d11": {
+            "count": 3,
+            "ok": true,
+            "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+          },
+          "d12": {
+            "count": 1,
+            "ok": true,
+            "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+          },
+          "d13": {
+            "count": 3,
+            "ok": true,
+            "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+          },
+          "d14": {
+            "count": 1,
+            "ok": true,
+            "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+          },
+          "d15": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+          },
+          "d16": {
+            "count": 1,
+            "ok": true,
+            "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+          },
+          "h01": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+          },
+          "h02": {
+            "count": 10,
+            "ok": true,
+            "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+          },
+          "h03": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+          },
+          "h04": {
+            "count": 3,
+            "ok": true,
+            "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+          }
+        },
+        "repetitions": 5,
+        "rss_kb": 24588,
+        "schema": 1,
+        "timestamp": "2026-10-22T12:54:22Z",
+        "total_queries": 20,
+        "warm_batches_ms": [
+          46.765,
+          45.851,
+          45.667,
+          45.644
+        ]
+      },
+      "decision": {
+        "accepted": true,
+        "baseline_cold_batch_ms": 343.228,
+        "baseline_median_batch_ms": 524.162,
+        "candidate_cold_batch_ms": 45.939,
+        "candidate_median_batch_ms": 45.759,
+        "cold_ratio": 0.0876,
+        "correctness": 1.0,
+        "reasons": [],
+        "stage": "post-promotion",
+        "tests_ok": true,
+        "warm_ratio": 0.0873
+      },
+      "experiment": "E001-search-index",
+      "step": "verify",
+      "tests": {
+        "duration_ms": 3840.801,
+        "ok": true,
+        "returncode": 0,
+        "summary": "OK",
+        "tail": "test_outside_write_denied (test_security.SecurityTests.test_outside_write_denied) ... ok\ntest_protected_write_denied (test_security.SecurityTests.test_protected_write_denied) ... ok\ntest_secret_name_denied (test_security.SecurityTests.test_secret_name_denied) ... ok\ntest_symlink_escape_denied (test_security.SecurityTests.test_symlink_escape_denied) ... ok\ntest_append_history_and_state_md (test_state.StateTests.test_append_history_and_state_md) ... ok\ntest_init_save_and_recover_backup (test_state.StateTests.test_init_save_and_recover_backup) ... ok\ntest_lock_is_exclusive_and_stale_safe (test_state.StateTests.test_lock_is_exclusive_and_stale_safe) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 3.222s\n\nOK",
+        "tests": 28,
+        "timed_out": false
+      }
+    },
+    {
+      "checkpoint": {
+        "archive": "checkpoints/ckpt-20261022T125422Z-post-E001-search-index.tar.gz",
+        "created_at": "2026-10-22T12:54:22Z",
+        "file_count": 67,
+        "files": [
+          ".gitignore",
+          ".opencode/agents/propose.md",
+          "ARCHITECTURE.md",
+          "README.md",
+          "ROADMAP.md",
+          "STATE.md",
+          "benchmarks/corpus/mod_a.py",
+          "benchmarks/corpus/mod_b.py",
+          "benchmarks/corpus/mod_c.py",
+          "benchmarks/corpus/mod_d.py",
+          "benchmarks/corpus/mod_e.py",
+          "benchmarks/corpus/mod_f.py",
+          "benchmarks/corpus/mod_g.py",
+          "benchmarks/corpus/mod_h.py",
+          "benchmarks/corpus/mod_i.py",
+          "benchmarks/corpus/mod_j.py",
+          "benchmarks/expected.json",
+          "benchmarks/results/baseline.json",
+          "benchmarks/tasks_dev.json",
+          "benchmarks/tasks_heldout.json",
+          "config/environments.json",
+          "config/initial_state.json",
+          "config/install.json",
+          "config/limits.json",
+          "config/model.json",
+          "config/permissions.json",
+          "experiments/E001-search-index/diff.patch",
+          "experiments/E001-search-index/proposal.json",
+          "experiments/E001-search-index/search_candidate.py",
+          "logs/bootstrap/v2-install.txt",
+          "logs/bootstrap/v2-model-smoke.txt",
+          "logs/bootstrap/v2-version.txt",
+          "logs/inspect-run-001.json",
+          "logs/runner.lock",
+          "model-host/.opencode/.gitignore",
+          "model-host/.opencode/agents/propose.md",
+          "model-host/opencode.json",
+          "opencode.jsonc",
+          "proposals/2026-10-22T125357Z-model.json",
+          "rollback/E001-search-index-search.py.bak",
+          "state.json",
+          "state.json.bak",
+          "tests/__init__.py",
+          "tests/helpers.py",
+          "tests/test_bench.py",
+          "tests/test_checkpoint.py",
+          "tests/test_experiment.py",
+          "tests/test_model.py",
+          "tests/test_runner.py",
+          "tests/test_search.py",
+          "tests/test_security.py",
+          "tests/test_state.py",
+          "tools/__init__.py",
+          "tools/baseline.py",
+          "tools/bench.py",
+          "tools/checkpoint.py",
+          "tools/experiment.py",
+          "tools/freeze.py",
+          "tools/inspect.py",
+          "tools/model.py",
+          "tools/modelrun",
+          "tools/oc2run",
+          "tools/runner.py",
+          "tools/search.py",
+          "tools/search_baseline.py",
+          "tools/security.py",
+          "tools/state.py"
+        ],
+        "label": "post-E001-search-index",
+        "name": "ckpt-20261022T125422Z-post-E001-search-index",
+        "schema": 1,
+        "sha256": "8801ad0682e6db4e831b13de4ad0ef7eb259ecbfb5e9a8954e202d67a1b19ce8",
+        "size_bytes": 46923
+      },
+      "experiment": "E001-search-index",
+      "step": "accepted"
+    },
+    {
+      "ok": true,
+      "path": "proposals/2026-10-22T125509Z-model.json",
+      "step": "model"
+    }
+  ]
+}

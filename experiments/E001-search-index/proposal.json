@@ -1,0 +1,20 @@
+{
+  "id": "E001-search-index",
+  "title": "Replace per-query grep process with an in-process indexed matcher",
+  "weakness": "Each search call spawns grep, so process startup dominates warm latency on a small fixed corpus.",
+  "hypothesis": "Scanning the corpus once into a cache and matching lines in-process will cut warm median batch latency to at most 0.75x the grep baseline while preserving every result.",
+  "metric": "Warm median batch latency, cold batch latency, and hash equality on 20 frozen queries.",
+  "change": "Promote experiments/E001-search-index/search_candidate.py to tools/search.py; keep grep as the fallback for patterns where Python and GNU ERE differ.",
+  "candidate": "experiments/E001-search-index/search_candidate.py",
+  "target": "tools/search.py",
+  "acceptance": {
+    "min_correctness": 1.0,
+    "max_latency_ratio": 0.75,
+    "max_cold_ratio": 1.25
+  },
+  "risk": "Python regex semantics differ from GNU grep ERE; the fallback must catch unsafe patterns and equivalence must be proven on frozen hashes.",
+  "reversible": true,
+  "expected_files": [
+    "tools/search.py"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema": 1,
+  "run_count": 0,
+  "completed_experiments": [],
+  "pending_experiments": ["E001-search-index"],
+  "failure_streak": 0,
+  "failures": {},
+  "next_task": "Capture the baseline, then execute E001-search-index once and measure it.",
+  "baseline_path": "benchmarks/results/baseline.json",
+  "last_checkpoint": null,
+  "current_experiment": null
+}

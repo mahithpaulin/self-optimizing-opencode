@@ -1,0 +1,45 @@
+{
+  "official_project": "https://github.com/anomalyco/opencode",
+  "docs": "https://opencode.ai/v2/docs",
+  "product": "OpenCode V2 CLI",
+  "version": "2.1.2",
+  "npm_package": "@opencode/cli",
+  "platform_artifact": "@opencode/cli-linux-arm64-musl@2.1.2",
+  "artifact_url": "https://registry.npmjs.org/@opencode/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.1.2.tgz",
+  "artifact_integrity": "sha512-A9s3rj+Kb1RNRSzYRUxaXshudRliZbnNfg5+VfKUnVGASe2fbTGmQcwAxPsGFeTYt1Qinz5mOhEtHBXl5vh7lg==",
+  "artifact_integrity_verified": true,
+  "installed_at": "2026-10-22T12:24:00Z",
+  "install_dir": "~/.local/opencode-v2/2.1.2",
+  "launcher": "~/.local/opencode-v2/bin/opencode2",
+  "external_command": "opencode2",
+  "binary_sha256": "fa3b15239254262bbb8dc6016ed39ab8b181e8e2ab7db4be70bcb0fbe6877d28",
+  "musl_loader_sha256": "55c6590cb062ec33cf76c2c68cb736e0f845945413651d8addec5f05cd5fcef7",
+  "musl_runtime_note": "The ELF is dynamically linked to libc.musl-aarch64.so.1 and libstdc++.so.6. The loader and shared libraries already present for the Termux V1 installation were copied into the V2 lib directory. No OpenCode V1 code is executed by opencode2.",
+  "install_method": "Official installer script inspected; it selects linux-arm64 (glibc), which cannot run on Android bionic. The official musl platform artifact was downloaded from the npm registry, SHA-512 integrity checked, and extracted into an isolated directory. This is the same artifact the official installer uses for musl Linux.",
+  "existing_v1": {
+    "path": "~/.opencode/opencode",
+    "version": "1.19.3",
+    "untouched": true,
+    "verified_after_install": true
+  },
+  "verification": {
+    "version_command": "opencode2 --version",
+    "version_output": "opencode v2.1.2",
+    "smoke_prompt": "Reply with exactly: V2_MODEL_OK",
+    "smoke_output": "V2_MODEL_OK",
+    "smoke_elapsed_seconds": 9,
+    "server_mode": "explicit `opencode serve --hostname 127.0.0.1 --port <port>` + `opencode run --server <url>`"
+  },
+  "known_limitation": {
+    "symptom": "opencode run --standalone -> Error: Standalone server exited before reporting readiness",
+    "cause": "The CLI self-spawns using its executable path. Because the Termux launch path is the musl loader, it tries `ld-musl ... serve` and cannot load `serve`.",
+    "mitigation": "tools/oc2run starts the official server explicitly and points the official client at it. Service/self-spawn commands remain unsupported.",
+    "not_claimed": "This is not an official Android/Termux support claim. The official docs list Linux glibc/musl only."
+  },
+  "environment_selection": {
+    "chosen": "Android/Termux local (only available persistent environment)",
+    "codespaces": "blocked: 0 h remaining, 5-hour quota guard",
+    "kaggle": "rejected: ephemeral kernel, no persistent CLI",
+    "github_actions": "rejected: ephemeral CI, no persistent shell; publication not authorized"
+  }
+}

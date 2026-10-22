@@ -1,0 +1,7 @@
+$ ~/.local/opencode-v2/bin/opencode2 --version
+opencode v2.1.2
+
+$ opencode --version
+1.19.3
+
+Note: `opencode` (V1) was not replaced. `opencode2` is the isolated official V2 launcher.

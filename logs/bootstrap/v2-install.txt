@@ -1,0 +1,31 @@
+Official V2 installation evidence
+=================================
+
+Docs: https://opencode.ai/v2/docs
+Source: https://registry.npmjs.org/@opencode/cli-linux-arm64-musl/-/cli-linux-arm64-musl-2.1.2.tgz
+Version: 2.1.2
+Integrity: sha512-A9s3rj+Kb1RNRSzYRUxaXshudRliZbnNfg5+VfKUnVGASe2fbTGmQcwAxPsGFeTYt1Qinz5mOhEtHBXl5vh7lg==
+Integrity verified: yes (recomputed SHA-512 of the tarball, base64 compares equal)
+Binary SHA-256: fa3b15239254262bbb8dc6016ed39ab8b181e8e2ab7db4be70bcb0fbe6877d28
+Install dir: ~/.local/opencode-v2/2.1.2 (203 MB)
+Launcher: ~/.local/opencode-v2/bin/opencode2 -> $PREFIX/bin/opencode2
+
+Why not the curl installer directly:
+- The installer detects uname Linux/aarch64 and selects linux-arm64 (glibc).
+- Android bionic cannot execute the glibc build.
+- The official musl platform artifact is the supported Linux-musl build; it was
+  extracted manually and launched with a musl ELF loader.
+- The official installer would also target ~/.opencode/bin, alongside the existing V1
+  installation, which was deliberately preserved.
+
+Observed Termux-specific failure:
+  $ opencode2 run --standalone ...
+  Error: Standalone server exited before reporting readiness
+  cause: process.execPath is the loader; self-spawn runs `ld-musl serve` and fails
+
+Working official path used by this system:
+  opencode2 serve --hostname 127.0.0.1 --port <port>
+  opencode2 run --server http://127.0.0.1:<port> ...
+
+No fork CLI is installed or used as V2. The V1 `opencode-termux` installation remains
+untouched and still reports 1.19.3.

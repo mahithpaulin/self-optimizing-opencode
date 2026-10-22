@@ -1,0 +1,13 @@
+Command shape:
+  opencode2 serve --hostname 127.0.0.1 --port <ephemeral>
+  opencode2 run --server http://127.0.0.1:<port> \
+    --model opencode/deepseek-v4.1-flash-free \
+    "Reply with exactly: V2_MODEL_OK"
+
+Result:
+  V2_MODEL_OK
+  client exit code: 0
+  elapsed: 9 s
+
+Authentication: existing OpenCode Console API key read from the runtime auth store.
+No key, password, or session token is stored in this workspace or this log.

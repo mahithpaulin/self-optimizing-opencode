@@ -1,0 +1,17 @@
+{
+  "max_iterations": 2,
+  "max_seconds": 900,
+  "max_model_calls": 1,
+  "max_model_seconds": 180,
+  "max_failure_streak": 2,
+  "min_free_mb": 250,
+  "subprocess_timeout_seconds": 30,
+  "subprocess_cpu_seconds": 20,
+  "subprocess_file_size_bytes": 5242880,
+  "max_output_bytes": 200000,
+  "max_read_bytes": 1048576,
+  "max_write_bytes": 2097152,
+  "benchmark_repetitions": 5,
+  "search_max_results": 500,
+  "lock_stale_seconds": 21600
+}

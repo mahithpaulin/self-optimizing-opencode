@@ -1,0 +1,18 @@
+#!/data/data/com.termux/files/usr/bin/bash
+# V1 official client adapter. V2.1.2 is installed, but its hosted free tier
+# returns 403 FreeTierError for this account/network; V1.19.3 with the same
+# free model succeeds and is the only permitted free inference path.
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+HOST="$ROOT/model-host"
+MODEL="${SOO_MODEL_ID:-opencode/deepseek-v4.1-flash-free}"
+TIMEOUT="${SOO_MODEL_TIMEOUT:-180}"
+
+cd "$HOST"
+OPENCODE_CONFIG="$HOST/opencode.json" timeout "$TIMEOUT" opencode run \
+  --pure \
+  --format json \
+  --agent propose \
+  --model "$MODEL" \
+  "$@"

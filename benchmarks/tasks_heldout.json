@@ -1,0 +1,11 @@
+{
+  "corpus": "benchmarks/corpus",
+  "include": "*.py",
+  "max_results": 500,
+  "queries": [
+    { "id": "h01", "pattern": "model" },
+    { "id": "h02", "pattern": "state" },
+    { "id": "h03", "pattern": "def run" },
+    { "id": "h04", "pattern": "except " }
+  ]
+}

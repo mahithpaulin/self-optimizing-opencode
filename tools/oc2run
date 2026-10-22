@@ -1,0 +1,91 @@
+#!/data/data/com.termux/files/usr/bin/bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+BIN="${OPENCODE_V2_BIN:-$HOME/.local/opencode-v2/bin/opencode2}"
+STATE="${OPENCODE_V2_STATE:-$HOME/.local/state/opencode-v2}"
+TIMEOUT="${SOO_MODEL_TIMEOUT:-180}"
+MODEL="${SOO_MODEL_ID:-opencode/deepseek-v4.1-flash-free}"
+export OPENCODE_CLIENT="${OPENCODE_CLIENT:-cli}"
+
+mkdir -p "$STATE/config" "$STATE/data" "$STATE/state" "$STATE/cache" "$STATE/logs"
+chmod 700 "$STATE" "$STATE/logs" 2>/dev/null || true
+export XDG_CONFIG_HOME="$STATE/config"
+export XDG_DATA_HOME="$STATE/data"
+export XDG_STATE_HOME="$STATE/state"
+export XDG_CACHE_HOME="$STATE/cache"
+
+if [ ! -x "$BIN" ]; then
+  echo "OpenCode V2 launcher missing: $BIN" >&2
+  exit 2
+fi
+
+if [ -z "${OPENCODE_API_KEY:-}" ]; then
+  OPENCODE_API_KEY="$(python3 -c 'import json,os;print(json.load(open(os.path.expanduser("~/.local/share/opencode/auth.json")))["opencode"]["key"])' 2>/dev/null)" || {
+    echo "No authorized OpenCode API credential found" >&2
+    exit 3
+  }
+  export OPENCODE_API_KEY
+fi
+
+PASSWORD="$(python3 -c 'import secrets;print(secrets.token_urlsafe(24))')"
+export OPENCODE_PASSWORD="$PASSWORD"
+
+PORT="$(python3 - <<'PY'
+import socket
+sock = socket.socket()
+sock.bind(("127.0.0.1", 0))
+print(sock.getsockname()[1])
+sock.close()
+PY
+)"
+SERVER_LOG="$STATE/logs/server-$(date +%s)-$$.log"
+umask 077
+setsid "$BIN" serve --hostname 127.0.0.1 --port "$PORT" >"$SERVER_LOG" 2>&1 &
+SPID=$!
+cleanup() {
+  kill -TERM -- "-$SPID" 2>/dev/null || true
+  sleep 1
+  kill -KILL -- "-$SPID" 2>/dev/null || true
+  wait "$SPID" 2>/dev/null || true
+  if [ "${SOO_KEEP_MODEL_LOG:-0}" != "1" ]; then
+    rm -f "$SERVER_LOG"
+  fi
+}
+trap cleanup EXIT INT TERM
+
+ready=0
+for _ in $(seq 1 40); do
+  if python3 - "$PORT" <<'PY'
+import socket, sys
+sock = socket.socket()
+sock.settimeout(0.5)
+try:
+    sock.connect(("127.0.0.1", int(sys.argv[1])))
+except OSError:
+    raise SystemExit(1)
+finally:
+    sock.close()
+PY
+  then
+    ready=1
+    break
+  fi
+  if ! kill -0 "$SPID" 2>/dev/null; then
+    echo "OpenCode V2 server exited before readiness" >&2
+    exit 4
+  fi
+  sleep 0.5
+done
+if [ "$ready" != "1" ]; then
+  echo "OpenCode V2 server did not become ready" >&2
+  exit 4
+fi
+
+cd "$ROOT"
+timeout "$TIMEOUT" "$BIN" run \
+  --server "http://127.0.0.1:$PORT" \
+  --agent propose \
+  --format json \
+  --model "$MODEL" \
+  "$@"

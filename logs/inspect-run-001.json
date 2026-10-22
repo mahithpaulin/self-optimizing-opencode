@@ -1,0 +1,81 @@
+{
+  "baseline_present": true,
+  "git": {
+    "log": "",
+    "status": "## No commits yet on main\n?? .gitignore\n?? .opencode/\n?? ARCHITECTURE.md\n?? README.md\n?? ROADMAP.md\n?? STATE.md\n?? benchmarks/\n?? config/\n?? experiments/\n?? logs/\n?? model-host/\n?? opencode.jsonc\n?? proposals/\n?? state.json\n?? state.json.bak\n?? tests/\n?? tools/",
+    "status_ok": true
+  },
+  "host": {
+    "cpu_count": 8,
+    "disk_free_mb": 33835,
+    "machine": "aarch64",
+    "mem_available_mb": 1091,
+    "node": {
+      "ok": true,
+      "output": "v24.18.0"
+    },
+    "opencode_v1": {
+      "ok": false,
+      "output": "EROFS: read-only file system, mkdir '/tmp'\n    path: \"/tmp\",\n syscall: \"mkdir\",\n   errno: -30,\n    code: \"EROFS\"\n\n\nBun v1.3.14 (Linux arm64)"
+    },
+    "opencode_v2": {
+      "ok": false,
+      "output": "Error: EROFS: read-only file system, mkdir '/tmp'"
+    },
+    "platform": "Android-13-aarch64-64bit",
+    "python": "3.14.6"
+  },
+  "limitations": [
+    "same-UID worker; no container or kernel namespace",
+    "network egress restricted by environment and allowlist, not a netns"
+  ],
+  "protected_hashes": {
+    "benchmarks/expected.json": "117225a76494e93edf8711c3e9297e37d5e80cbe1a983b22ff91c6560d29b259",
+    "benchmarks/tasks_heldout.json": "84ee3f644c8f28721fd835ff59d371d695c8d1a05baf271b10db47acb8e0f01c",
+    "config/limits.json": "2aaca3491d456fd3fd32c6ddb01b375e0639dc74c7a42537ec01547ad71e9cb2",
+    "config/permissions.json": "9ac7c51ca62e77451296bf8b9023ab164b8f5c98b51c498e86bb318e4f32e318",
+    "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests/helpers.py": "a41d5e1b7a4aaadd501fc74b97ccfc600febfab741d6481a1e3e2525cc7787af",
+    "tests/test_bench.py": "ed4fc2811f3a5248481177d7e215bc2112630870e99c96761117b2021b08a074",
+    "tests/test_checkpoint.py": "6d246f3ee4570fc8a3effdc5c768974b6d454534099896770ebb01fbf2d9b54f",
+    "tests/test_experiment.py": "623f78600fac45582d33ab96df7bfd249ea16a64ca5692e0849d0fbed2ca7a4c",
+    "tests/test_model.py": "095ba56859a90b619f8559353a973818e8fbcbfb3bf879589976151c859f714c",
+    "tests/test_runner.py": "8c5e56d860b90839c2c0c62e996385e989996f92b4b679e85b4887ece3bf86f3",
+    "tests/test_search.py": "a2d39d6b779abdf938591523c01d2a1d8b72f0772ef718bfa8d96fddbbf84ca5",
+    "tests/test_security.py": "19a42bc1c8eed24b6385f88aa87d7afb5df825fde49a7f4c471dfc223503977a",
+    "tests/test_state.py": "ccb3cdf08d8467efdfd15239319444d6ffdcc52cb9b3e8002416ff71e8eaef1c",
+    "tools/search_baseline.py": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+    "tools/security.py": "c9fc0dd9956c58b2a9b7c63a1442b6c80d25ad11612ed27b9cc54bf6349f187c"
+  },
+  "run_id": "run-001",
+  "schema": 1,
+  "state": {
+    "completed": [],
+    "current": null,
+    "failure_streak": 0,
+    "next_task": "Execute the next pending experiment, then one proposal call.",
+    "pending": [
+      "E001-search-index"
+    ],
+    "run_count": 1
+  },
+  "timestamp": "2026-10-22T12:54:08Z",
+  "workspace": {
+    "by_suffix": {
+      ".bak": 1,
+      ".json": 14,
+      ".jsonc": 1,
+      ".lock": 1,
+      ".md": 6,
+      ".py": 34,
+      ".txt": 3,
+      "<none>": 4
+    },
+    "file_count": 64,
+    "path": "/data/data/com.termux/files/home/projects/self-optimizing-opencode",
+    "test_files": 10,
+    "test_functions": 28,
+    "total_bytes": 142699,
+    "tree_hash": "e5de88219fd2d66f4ced964e25a23505c166af9d804cc35e6618d703cc4f48c3"
+  }
+}

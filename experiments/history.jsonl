@@ -1,0 +1,2 @@
+{"decision": {"accepted": true, "baseline_cold_batch_ms": 343.228, "baseline_median_batch_ms": 524.162, "candidate_cold_batch_ms": 45.939, "candidate_median_batch_ms": 45.759, "cold_ratio": 0.0876, "correctness": 1.0, "reasons": [], "stage": "post-promotion", "tests_ok": true, "warm_ratio": 0.0873}, "event": "experiment_accepted", "experiment": "E001-search-index", "timestamp": "2026-10-22T12:54:22Z"}
+{"event": "model_proposal", "ok": true, "path": "proposals/2026-10-22T125509Z-model.json", "timestamp": "2026-10-22T12:55:09Z"}

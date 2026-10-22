@@ -1,0 +1,23 @@
+{
+  "corpus": "benchmarks/corpus",
+  "include": "*.py",
+  "max_results": 500,
+  "queries": [
+    { "id": "d01", "pattern": "def " },
+    { "id": "d02", "pattern": "TODO" },
+    { "id": "d03", "pattern": "return None" },
+    { "id": "d04", "pattern": "import os" },
+    { "id": "d05", "pattern": "raise ValueError" },
+    { "id": "d06", "pattern": "checkpoint" },
+    { "id": "d07", "pattern": "security" },
+    { "id": "d08", "pattern": "timeout=" },
+    { "id": "d09", "pattern": "subprocess" },
+    { "id": "d10", "pattern": "json.dumps" },
+    { "id": "d11", "pattern": "assert " },
+    { "id": "d12", "pattern": "pathlib" },
+    { "id": "d13", "pattern": "class " },
+    { "id": "d14", "pattern": "PermissionError" },
+    { "id": "d15", "pattern": "rollback" },
+    { "id": "d16", "pattern": "sha256" }
+  ]
+}
