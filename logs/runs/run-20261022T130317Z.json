@@ -99,6 +99,13 @@
   },
   "decisions": [],
   "errors": [],
+  "git": {
+    "add": "",
+    "commit": "[main bc93e11] soo: run 3 checkpoint and evidence\n 6 files changed, 1248 insertions(+), 15 deletions(-)\n create mode 100644 logs/inspect-run-003.json\n create mode 100644 logs/runs/run-20261022T130253Z.json\n create mode 100644 logs/runs/run-20261022T130317Z.json",
+    "committed": true,
+    "log": "bc93e11 soo: run 3 checkpoint and evidence\ne12467a soo: run 2 checkpoint and evidence\n6270eb6 docs: record E001 result and V1 free-tier adapter",
+    "stderr": ""
+  },
   "inspect": {
     "baseline_present": true,
     "git": {
