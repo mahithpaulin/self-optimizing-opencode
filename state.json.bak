@@ -568,7 +568,7 @@
       10.203
     ]
   },
-  "last_checkpoint": "checkpoints/ckpt-20261022T135004Z-post-E003-scan-snapshot.json",
+  "last_checkpoint": "checkpoints/ckpt-20261022T135005Z-final.json",
   "last_model_call": {
     "elapsed_ms": 46360.225,
     "error": null,
@@ -590,8 +590,8 @@
       "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
     }
   },
-  "last_run_finished": "2026-10-22T13:49:46Z",
-  "last_run_seconds": 20.173,
+  "last_run_finished": "2026-10-22T13:50:05Z",
+  "last_run_seconds": 15.943,
   "last_run_started": "2026-10-22T13:49:49Z",
   "model_calls": 1,
   "model_proposals": [

@@ -1,0 +1,248 @@
+{
+  "checkpoint": "checkpoints/ckpt-20261022T141925Z-campaign-final.json",
+  "checkpoint_verified": true,
+  "errors": [],
+  "experiments": [
+    {
+      "accepted": true,
+      "after_median_ms": 19.193,
+      "before_median_ms": 53.376,
+      "delta_pct": 64.042,
+      "elapsed_seconds": 21.699,
+      "experiment": "E002-scan-fast",
+      "rate_pct_per_min": 177.083,
+      "runner_returncode": 0,
+      "runner_stderr": "",
+      "runner_stdout": "run=4 completed=['E001-search-index', 'E002-scan-fast'] failed=[] model=1 checkpoint=checkpoints/ckpt-20261022T134946Z-final.json git=True"
+    },
+    {
+      "accepted": true,
+      "after_median_ms": 10.122,
+      "before_median_ms": 19.492,
+      "delta_pct": 48.071,
+      "elapsed_seconds": 17.04,
+      "experiment": "E003-scan-snapshot",
+      "rate_pct_per_min": 169.264,
+      "runner_returncode": 0,
+      "runner_stderr": "",
+      "runner_stdout": "run=5 completed=['E001-search-index', 'E002-scan-fast', 'E003-scan-snapshot'] failed=[] model=1 checkpoint=checkpoints/ckpt-20261022T135005Z-final.json git=True"
+    }
+  ],
+  "final_cold_ms": 8.151,
+  "final_median_ms": 7.777,
+  "finished_at": "2026-10-22T14:19:25Z",
+  "initial_cold_ms": 53.102,
+  "initial_median_ms": 56.121,
+  "requested_minutes": 30.0,
+  "schema": 1,
+  "soak": [
+    {
+      "cold_batch_ms": 9.629,
+      "correctness": 1.0,
+      "elapsed_min": 1.716,
+      "median_batch_ms": 9.742,
+      "p95_batch_ms": 9.805
+    },
+    {
+      "cold_batch_ms": 9.694,
+      "correctness": 1.0,
+      "elapsed_min": 2.715,
+      "median_batch_ms": 9.851,
+      "p95_batch_ms": 10.138
+    },
+    {
+      "cold_batch_ms": 18.926,
+      "correctness": 1.0,
+      "elapsed_min": 3.731,
+      "median_batch_ms": 10.887,
+      "p95_batch_ms": 11.871
+    },
+    {
+      "cold_batch_ms": 9.848,
+      "correctness": 1.0,
+      "elapsed_min": 4.715,
+      "median_batch_ms": 9.991,
+      "p95_batch_ms": 10.269
+    },
+    {
+      "cold_batch_ms": 9.84,
+      "correctness": 1.0,
+      "elapsed_min": 5.716,
+      "median_batch_ms": 9.966,
+      "p95_batch_ms": 10.278
+    },
+    {
+      "cold_batch_ms": 9.884,
+      "correctness": 1.0,
+      "elapsed_min": 6.718,
+      "median_batch_ms": 9.798,
+      "p95_batch_ms": 10.06
+    },
+    {
+      "cold_batch_ms": 9.71,
+      "correctness": 1.0,
+      "elapsed_min": 7.715,
+      "median_batch_ms": 9.605,
+      "p95_batch_ms": 9.865
+    },
+    {
+      "cold_batch_ms": 9.977,
+      "correctness": 1.0,
+      "elapsed_min": 8.719,
+      "median_batch_ms": 9.903,
+      "p95_batch_ms": 10.269
+    },
+    {
+      "cold_batch_ms": 9.874,
+      "correctness": 1.0,
+      "elapsed_min": 9.717,
+      "median_batch_ms": 9.926,
+      "p95_batch_ms": 10.23
+    },
+    {
+      "cold_batch_ms": 9.837,
+      "correctness": 1.0,
+      "elapsed_min": 10.718,
+      "median_batch_ms": 9.965,
+      "p95_batch_ms": 10.196
+    },
+    {
+      "cold_batch_ms": 10.086,
+      "correctness": 1.0,
+      "elapsed_min": 11.716,
+      "median_batch_ms": 10.266,
+      "p95_batch_ms": 10.486
+    },
+    {
+      "cold_batch_ms": 10.015,
+      "correctness": 1.0,
+      "elapsed_min": 12.715,
+      "median_batch_ms": 10.033,
+      "p95_batch_ms": 10.156
+    },
+    {
+      "cold_batch_ms": 9.838,
+      "correctness": 1.0,
+      "elapsed_min": 13.716,
+      "median_batch_ms": 9.784,
+      "p95_batch_ms": 10.024
+    },
+    {
+      "cold_batch_ms": 10.022,
+      "correctness": 1.0,
+      "elapsed_min": 14.715,
+      "median_batch_ms": 9.887,
+      "p95_batch_ms": 10.112
+    },
+    {
+      "cold_batch_ms": 9.828,
+      "correctness": 1.0,
+      "elapsed_min": 15.715,
+      "median_batch_ms": 9.826,
+      "p95_batch_ms": 10.523
+    },
+    {
+      "cold_batch_ms": 9.696,
+      "correctness": 1.0,
+      "elapsed_min": 16.716,
+      "median_batch_ms": 9.713,
+      "p95_batch_ms": 10.234
+    },
+    {
+      "cold_batch_ms": 9.921,
+      "correctness": 1.0,
+      "elapsed_min": 17.715,
+      "median_batch_ms": 9.853,
+      "p95_batch_ms": 10.169
+    },
+    {
+      "cold_batch_ms": 9.829,
+      "correctness": 1.0,
+      "elapsed_min": 18.721,
+      "median_batch_ms": 9.943,
+      "p95_batch_ms": 10.043
+    },
+    {
+      "cold_batch_ms": 9.721,
+      "correctness": 1.0,
+      "elapsed_min": 19.715,
+      "median_batch_ms": 9.908,
+      "p95_batch_ms": 10.446
+    },
+    {
+      "cold_batch_ms": 9.96,
+      "correctness": 1.0,
+      "elapsed_min": 20.715,
+      "median_batch_ms": 9.871,
+      "p95_batch_ms": 10.178
+    },
+    {
+      "cold_batch_ms": 10.343,
+      "correctness": 1.0,
+      "elapsed_min": 21.715,
+      "median_batch_ms": 10.498,
+      "p95_batch_ms": 10.995
+    },
+    {
+      "cold_batch_ms": 9.767,
+      "correctness": 1.0,
+      "elapsed_min": 22.715,
+      "median_batch_ms": 9.748,
+      "p95_batch_ms": 10.195
+    },
+    {
+      "cold_batch_ms": 9.975,
+      "correctness": 1.0,
+      "elapsed_min": 23.715,
+      "median_batch_ms": 10.154,
+      "p95_batch_ms": 10.311
+    },
+    {
+      "cold_batch_ms": 9.633,
+      "correctness": 1.0,
+      "elapsed_min": 24.715,
+      "median_batch_ms": 9.922,
+      "p95_batch_ms": 10.293
+    },
+    {
+      "cold_batch_ms": 9.577,
+      "correctness": 1.0,
+      "elapsed_min": 25.718,
+      "median_batch_ms": 9.709,
+      "p95_batch_ms": 9.992
+    },
+    {
+      "cold_batch_ms": 9.854,
+      "correctness": 1.0,
+      "elapsed_min": 26.716,
+      "median_batch_ms": 9.794,
+      "p95_batch_ms": 9.907
+    },
+    {
+      "cold_batch_ms": 20.806,
+      "correctness": 1.0,
+      "elapsed_min": 27.724,
+      "median_batch_ms": 32.473,
+      "p95_batch_ms": 43.041
+    },
+    {
+      "cold_batch_ms": 10.789,
+      "correctness": 1.0,
+      "elapsed_min": 28.721,
+      "median_batch_ms": 10.271,
+      "p95_batch_ms": 11.752
+    },
+    {
+      "cold_batch_ms": 8.999,
+      "correctness": 1.0,
+      "elapsed_min": 29.72,
+      "median_batch_ms": 9.06,
+      "p95_batch_ms": 9.295
+    }
+  ],
+  "soak_median_ms": 9.903,
+  "started_at": "2026-10-22T13:49:24Z",
+  "total_rate_pct_per_min": 2.8702,
+  "total_reduction_pct": 86.142,
+  "wall_minutes": 30.013
+}
