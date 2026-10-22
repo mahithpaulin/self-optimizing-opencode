@@ -91,7 +91,10 @@ def run(
             raise RuntimeError(f"failure streak {state.get('failure_streak')} reached max_failure_streak")
         state["run_count"] = int(state.get("run_count", 0)) + 1
         state["last_run_started"] = state_mod.utc_now()
-        state["next_task"] = "Execute the next pending experiment, then one proposal call."
+        if state.get("pending_experiments"):
+            state["next_task"] = "Execute the next pending experiment, then one proposal call."
+        else:
+            state["next_task"] = "Review evidence and gate the next experiment."
         state_mod.save_state(state, ws.root)
         snap = snapshot(ws.root, run_id=f"run-{state['run_count']:03d}")
         record["inspect"] = snap
@@ -312,6 +315,7 @@ def run(
         commit = _git_commit(ws, f"soo: run {state['run_count']} checkpoint and evidence")
         record["git"] = commit
         _write_run_log(ws, record)
+        _git_commit(ws, f"soo: run {state['run_count']} evidence log")
         print(
             f"run={state['run_count']} completed={state.get('completed_experiments')} "
             f"failed={list(state.get('failed_experiments', {}))} model={state.get('model_calls')} "
