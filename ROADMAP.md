@@ -2,7 +2,7 @@
 
 Ordered, measurable work. One experiment per cycle; each must be reversible.
 
-## E001 — indexed search backend (pending)
+## E001 — indexed search backend (ACCEPTED 2026-10-22)
 
 **Weakness:** the search tool shells out to `grep` for every query, paying process,
 argument, and output-parsing overhead on every call; inspections issue many queries.
@@ -14,7 +14,11 @@ cold-start penalty (<= 25% over baseline).
 **Accept only if:** dev + held-out correctness 100%; all tests pass; no protected file
 changed; warm median <= 0.75x baseline; cold batch <= 1.25x baseline median.
 
-**Rollback:** `rollback/E001-search.py.bak` restores the previous active backend.
+**Result:** 20/20 queries correct; warm 45.759 ms vs 524.162 ms baseline (0.0873x);
+cold 45.939 ms (0.0876x); 28/28 tests pass. Checkpoint
+`checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`.
+
+**Rollback:** `rollback/E001-search-index-search.py.bak` restores the previous active backend.
 
 ## E002 — failure classifier (backlog, not implemented)
 
@@ -31,7 +35,8 @@ verified restore rate. Never overwrite the live workspace automatically.
 ## Rules
 
 - Benchmarks and evaluation rules are frozen during a run. The worker cannot edit
-  `tests/`, `benchmarks/heldout.json`, `benchmarks/expected.json`, or
+  `tests/`, the corpus, `benchmarks/tasks_dev.json`, `benchmarks/tasks_heldout.json`,
+  `benchmarks/expected.json`, `benchmarks/results/baseline.json`, or
   `config/permissions.json`.
 - Development queries (`benchmarks/tasks_dev.json`) and held-out queries
   (`benchmarks/tasks_heldout.json`) are separate; acceptance reports both.

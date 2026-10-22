@@ -56,7 +56,7 @@ def create(label: str = "manual", root: str | Path | None = None) -> dict:
         "file_count": len(files),
         "files": [path.relative_to(ws.root).as_posix() for path in sorted(files)],
     }
-    ws.write_json(f"checkpoints/{name}.json", manifest)
+    ws.write_json(f"checkpoints/{name}.json", manifest, allow_protected=True)
     return manifest
 
 
@@ -86,7 +86,7 @@ def verify(manifest_path: str | Path, root: str | Path | None = None) -> dict:
 def extract(manifest_path: str | Path, destination: str | Path, root: str | Path | None = None) -> dict:
     ws = Workspace(root or ROOT)
     manifest = json.loads(ws.read_text(manifest_path))
-    dest = ws.resolve(destination, for_write=True)
+    dest = ws.resolve(destination, for_write=True, allow_protected=True)
     dest.mkdir(parents=True, exist_ok=True)
     archive = ws.resolve(manifest["archive"])
     with tarfile.open(archive, "r:gz") as tar:

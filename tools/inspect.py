@@ -43,14 +43,9 @@ def _mem_available_mb() -> int | None:
 
 
 def _protected_hashes(ws: Workspace) -> dict[str, str]:
-    prefixes = (
-        "tests/",
-        "benchmarks/expected.json",
-        "benchmarks/tasks_heldout.json",
-        "config/permissions.json",
-        "config/limits.json",
-        "tools/security.py",
-        "tools/search_baseline.py",
+    prefixes = tuple(
+        prefix for prefix in ws.policy.get("protected_write_prefixes", [])
+        if prefix not in {".git/", "checkpoints/"}
     )
     result: dict[str, str] = {}
     for path in ws.files():

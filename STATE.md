@@ -1,12 +1,13 @@
 # STATE
 
-Updated: 2026-10-22T12:31:30Z (bootstrap)
+Updated: 2026-10-22T12:55:10Z (post-run, E001 accepted)
 
 ## Objective
 
 Run a bounded, evidence-based loop that improves this system's own engineering workflow
-and tool capabilities, using only the official OpenCode V2 CLI and a genuinely free
-model, with checkpointed state and rollback.
+and tool capabilities, using official OpenCode clients and a genuinely free model, with
+checkpointed state and rollback. V2.1.2 is installed; V1.19.3 is the active free-tier
+adapter because V2's hosted free tier currently returns 403.
 
 ## Environment
 
@@ -15,8 +16,9 @@ model, with checkpointed state and rollback.
 - Codespaces is the best theoretical environment but has 0 h remaining this month, so
   the 5-hour quota guard forbids starting it. Kaggle is ephemeral/GPU-only;
   GitHub Actions is ephemeral CI. Local Termux is the strongest **available** environment.
-- Official V2 works through the musl artifact plus an explicit server; see
-  `config/install.json` and the known limitation in `README.md`.
+- Official V2 executes through the musl artifact plus an explicit server, but its hosted
+  free tier returns 403 for this account/network. The official V1 client is the active
+  free-model adapter. See `config/install.json`, `config/model.json`, and `REPORT.md`.
 
 ## Installed
 
@@ -31,28 +33,38 @@ model, with checkpointed state and rollback.
 - Cost: $0 input/output/cache (OpenCode free model, limited-time availability).
 - Auth: existing OpenCode Console API key in `~/.local/share/opencode/auth.json`, read
   at runtime; never copied into this workspace. No billing or paid provider is used.
-- Verified: exact response `V2_MODEL_OK` in 9 s via official V2 client/server.
+- V2 smoke: exact response `V2_MODEL_OK` in 9 s at install time. Later V2 inference
+  returns `403 FreeTierError`; the official V1.19.3 client with the same model succeeds.
+- Active adapter: `tools/modelrun` (V1 `opencode run --pure --format json --agent propose`).
+  One call per run, 180 s cap, proposal-only, no tool authority.
 
 ## Baseline
 
-Not captured yet. E001 compares the grep-per-query search backend with an in-process
-indexed backend on a frozen 10-file corpus, 20 queries (16 dev, 4 held-out), measured
-in batch; correctness is checked against frozen SHA-256 result hashes.
+Captured 2026-10-22 in `benchmarks/results/baseline.json`: 20/20 frozen queries correct,
+warm median batch 524.162 ms, cold 343.228 ms, 28/28 tests passing, 12/12 tool probes
+passing, state restore and stale-lock recovery 100%.
 
 ## Current status
 
-- Workspace and safety layer: in progress at bootstrap.
-- E001: pending.
-- Next concrete task: run the full test suite, capture `benchmarks/results/baseline.json`,
-  then execute E001 once and accept only if held-out correctness is 100%, no test
-  regresses, and warm batch median latency improves by at least 25%.
+- E001 accepted and measured: warm 45.759 ms (0.0873x), cold 45.939 ms (0.0876x),
+  correctness 20/20, tests 28/28.
+- Active backend: `tools/search.py` (indexed candidate). Rollback:
+  `rollback/E001-search-index-search.py.bak`.
+- Checkpoint after: `checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json`;
+  final: `checkpoints/ckpt-20261022T125509Z-final.json`.
+- Model: one call, 46.36 s, $0, valid no-op proposal recorded; not executed.
+- Local git commit: `52d7c85 soo: run 1 E001 measured result`.
+- Next task: review the proposal and gate E002; no further experiment ran.
 
 ## Known limitations
 
 - No kernel/container isolation: `unshare` is not permitted. Confinement is code-level.
-- Free model availability is limited-time and rate-limited by the provider.
+- Free model availability is limited-time and rate-limited by the provider. V2.1.2's
+  hosted free tier currently returns 403 for this account/network; V1 is the active
+  free adapter.
 - `opencode run --standalone` and service self-spawn fail on Termux (loader exec path);
-  `tools/oc2run` uses explicit `serve` + `--server`.
+  `tools/oc2run` is an explicit `serve` + `--server` diagnostic, not the active adapter.
+- Termux `git` aborts at startup under a 768 MiB `RLIMIT_AS`; the cap is now 3 GiB.
 - Phone RAM is small; only one model call/server at a time, and the runner stops if
   available memory falls below 250 MB.
 - A process interrupted with SIGKILL can leave a stale lock; the next run detects and
@@ -62,6 +74,7 @@ in batch; correctness is checked against frozen SHA-256 result hashes.
 
 - No public repository, push, deployment, paid key, or background daemon.
 - No modification of the existing V1 configuration or session database.
+- No V2 inference while its free tier rejects this client; no paid fallback was used.
 - No claim of general intelligence or unsupervised self-improvement.
 
 ## 2026-10-22T12:54:22Z — E E001-search-index accepted

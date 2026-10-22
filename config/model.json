@@ -23,18 +23,32 @@
     "workspace_copy": false,
     "paid_key_added": false
   },
+  "active_adapter": {
+    "client": "official OpenCode V1.19.3",
+    "command": "tools/modelrun",
+    "working_directory": "model-host/",
+    "agent": "propose",
+    "agent_tools": ["read"],
+    "format": "json",
+    "mode": "proposal-only; output recorded and never executed",
+    "verified": true,
+    "verification_date": "2026-10-22T12:53:57Z",
+    "elapsed_seconds": 49.47
+  },
   "verification": {
-    "date": "2026-10-22T12:25:00Z",
-    "prompt": "Reply with exactly: V2_MODEL_OK",
-    "expected": "V2_MODEL_OK",
-    "actual": "V2_MODEL_OK",
-    "elapsed_seconds": 9,
-    "transport": "official OpenCode V2 client -> localhost official server -> inference endpoint"
+    "historical_v2_date": "2026-10-22T12:25:00Z",
+    "historical_v2_prompt": "Reply with exactly: V2_MODEL_OK",
+    "historical_v2_actual": "V2_MODEL_OK",
+    "historical_v2_elapsed_seconds": 9,
+    "v2_free_tier_status": "403 FreeTierError: free tier can only be used from within OpenCode",
+    "v1_free_tier_status": "success; exact JSON proposal returned",
+    "active_transport": "official V1 client -> OpenCode free provider; no paid fallback"
   },
   "known_limits": [
     "Free availability is described by OpenCode as limited-time; it can disappear without notice.",
     "Provider rate limits and account limits still apply and are not bypassed.",
-    "The model is accessed only for proposal text; it has no tool authority."
+    "V2.1.2's hosted free tier currently rejects this account/network; V1 is the active adapter.",
+    "The model is accessed only for proposal text; it has no write, edit, bash, network, or task authority."
   ],
-  "selection_reason": "Verified working under V2 on this device, zero input/output price, 200k context, tool use and reasoning metadata, and explicit coding-model tier. Big Pickle and other free candidates were considered but not benchmarked; this model had direct evidence of successful execution here."
+  "selection_reason": "The model is genuinely zero-cost on input/output, supports 200k context and tool metadata, and was verified through the official V1 free-tier client on this device. V2 was installed and checksum-verified, but its hosted free tier currently returns 403, so the free path is V1."
 }

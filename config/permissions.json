@@ -56,7 +56,13 @@
     "benchmarks/corpus/",
     "benchmarks/results/baseline.json",
     "tests/",
-    ".git/"
+    ".git/",
+    "tools/modelrun",
+    "tools/oc2run",
+    "model-host/",
+    "rollback/",
+    "checkpoints/",
+    "REPORT.md"
   ],
   "secret_name_fragments": [
     "auth.json",
@@ -68,7 +74,10 @@
     ".github_token"
   ],
   "worker_environment": {
-    "inherit": ["PATH", "LANG"],
+    "inherit": [
+      "PATH",
+      "LANG"
+    ],
     "set": {
       "OPENCODE_DISABLE_FREE_MODELS": "unset",
       "HTTP_PROXY": "http://127.0.0.1:9",
@@ -81,7 +90,13 @@
       "GIT_ASKPASS": "/bin/false",
       "SSH_ASKPASS": "/bin/false"
     },
-    "drop": ["OPENCODE_API_KEY", "OPENCODE_PASSWORD", "KAGGLE_API_V1_TOKEN", "GH_TOKEN", "GITHUB_TOKEN"]
+    "drop": [
+      "OPENCODE_API_KEY",
+      "OPENCODE_PASSWORD",
+      "KAGGLE_API_V1_TOKEN",
+      "GH_TOKEN",
+      "GITHUB_TOKEN"
+    ]
   },
   "enforcement_note": "Default-deny is enforced in tools/security.py for all worker actions. The model runs separately behind an agent with every permission denied. No kernel namespace is available on this Android device; see README limitations."
 }

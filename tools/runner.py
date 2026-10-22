@@ -32,6 +32,7 @@ def _git_commit(ws: Workspace, message: str) -> dict:
     paths = [
         ".gitignore",
         "README.md",
+        "REPORT.md",
         "STATE.md",
         "ROADMAP.md",
         "ARCHITECTURE.md",
@@ -42,11 +43,12 @@ def _git_commit(ws: Workspace, message: str) -> dict:
         "experiments",
         "benchmarks",
         "tests",
-        "model-host/opencode.json",
-        "model-host/.opencode/agents/propose.md",
+        "model-host",
         "logs",
         "proposals",
+        "rollback",
         "state.json",
+        "state.json.bak",
     ]
     paths = [path for path in paths if (ws.root / path).exists()]
     added = ws.run(["git", "add", *paths])

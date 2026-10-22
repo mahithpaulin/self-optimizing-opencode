@@ -41,5 +41,12 @@
     "codespaces": "blocked: 0 h remaining, 5-hour quota guard",
     "kaggle": "rejected: ephemeral kernel, no persistent CLI",
     "github_actions": "rejected: ephemeral CI, no persistent shell; publication not authorized"
+  },
+  "free_tier_status": {
+    "checked_at": "2026-10-22T12:53:57Z",
+    "v2_2_1_2": "403 FreeTierError for this account/network, including explicit serve + client",
+    "v1_1_19_3": "success with the same zero-cost model and a read-only propose agent",
+    "active_adapter": "tools/modelrun (V1 CLI); V2 remains installed but is not used for inference",
+    "paid_fallback_used": false
   }
 }

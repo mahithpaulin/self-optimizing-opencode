@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "opencode/deepseek-v4.1-flash-free",
+  "permission": {
+    "edit": "deny",
+    "bash": "deny",
+    "webfetch": "deny"
+  },
+  "agent": {
+    "propose": {
+      "description": "Proposal-only analyst. Read-only tool is exposed for provider compatibility; do not call tools.",
+      "mode": "primary",
+      "prompt": "Read the evidence summary in the user message. Do not ask questions and do not call tools. Return exactly one JSON object with keys weakness, hypothesis, metric, change, risk, reversible (boolean), and expected_files (array of strings). Keep strings under 400 characters. Never propose weakening permissions, tests, logging, or benchmark data; never propose network, deployment, publishing, purchases, background services, or remote git.",
+      "tools": {
+        "bash": false,
+        "edit": false,
+        "write": false,
+        "read": true,
+        "grep": false,
+        "glob": false,
+        "list": false,
+        "patch": false,
+        "webfetch": false,
+        "task": false,
+        "todowrite": false,
+        "todoread": false
+      }
+    }
+  }
+}

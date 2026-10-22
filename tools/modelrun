@@ -10,7 +10,10 @@ MODEL="${SOO_MODEL_ID:-opencode/deepseek-v4.1-flash-free}"
 TIMEOUT="${SOO_MODEL_TIMEOUT:-180}"
 
 cd "$HOST"
-OPENCODE_CONFIG="$HOST/opencode.json" timeout "$TIMEOUT" opencode run \
+OPENCODE_CONFIG="$HOST/opencode.json" \
+OPENCODE_DISABLE_PROJECT_CONFIG=1 \
+OPENCODE_CONFIG_PROJECT_DISABLE=1 \
+timeout "$TIMEOUT" opencode run \
   --pure \
   --format json \
   --agent propose \

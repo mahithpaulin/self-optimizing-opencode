@@ -16,7 +16,9 @@
     "container": false,
     "official_v2_native": false,
     "official_v2_via_musl": true,
-    "verdict": "selected because it is the only available persistent environment and official V2 executes after a documented platform adaptation"
+    "verdict": "selected because it is the only available persistent environment and official V2 executes after a documented platform adaptation",
+    "v2_free_tier_available": false,
+    "active_free_model_adapter": "official V1.19.3, isolated model-host project"
   },
   "codespaces": {
     "name": "opencode-box-p7rv5rxjwvvcj4p",
