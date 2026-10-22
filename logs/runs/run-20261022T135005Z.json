@@ -137,6 +137,13 @@
     }
   ],
   "errors": [],
+  "git": {
+    "add": "",
+    "commit": "[main 1ab4c2a] soo: run 5 checkpoint and evidence\n 13 files changed, 2367 insertions(+), 52 deletions(-)\n create mode 100644 campaign/bench-E002-scan-fast-after.json\n create mode 100644 campaign/bench-E003-scan-snapshot-before.json\n create mode 100644 campaign/timeline.jsonl\n create mode 100644 experiments/E003-scan-snapshot/diff.patch\n create mode 100644 experiments/E003-scan-snapshot/result.json\n create mode 100644 logs/inspect-run-005.json\n create mode 100644 logs/runs/run-20261022T135005Z.json\n create mode 100644 rollback/E003-scan-snapshot-search.py.bak",
+    "committed": true,
+    "log": "1ab4c2a soo: run 5 checkpoint and evidence\n8f79e90 soo: run 4 evidence log\nbfa4670 soo: run 4 checkpoint and evidence",
+    "stderr": ""
+  },
   "inspect": {
     "baseline_present": true,
     "git": {
