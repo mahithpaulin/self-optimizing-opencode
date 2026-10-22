@@ -1,0 +1,1152 @@
+{
+  "checkpoint": {
+    "manifest": {
+      "archive": "checkpoints/ckpt-20261022T134946Z-final.tar.gz",
+      "created_at": "2026-10-22T13:49:46Z",
+      "file_count": 91,
+      "files": [
+        ".gitignore",
+        ".opencode/agents/propose.md",
+        "ARCHITECTURE.md",
+        "README.md",
+        "REPORT.md",
+        "ROADMAP.md",
+        "STATE.md",
+        "benchmarks/corpus/mod_a.py",
+        "benchmarks/corpus/mod_b.py",
+        "benchmarks/corpus/mod_c.py",
+        "benchmarks/corpus/mod_d.py",
+        "benchmarks/corpus/mod_e.py",
+        "benchmarks/corpus/mod_f.py",
+        "benchmarks/corpus/mod_g.py",
+        "benchmarks/corpus/mod_h.py",
+        "benchmarks/corpus/mod_i.py",
+        "benchmarks/corpus/mod_j.py",
+        "benchmarks/expected.json",
+        "benchmarks/results/baseline.json",
+        "benchmarks/tasks_dev.json",
+        "benchmarks/tasks_heldout.json",
+        "campaign/bench-E002-scan-fast-before.json",
+        "campaign/bench-initial.json",
+        "campaign/run-30m.log",
+        "config/environments.json",
+        "config/initial_state.json",
+        "config/install.json",
+        "config/limits.json",
+        "config/model.json",
+        "config/permissions.json",
+        "experiments/E001-search-index/diff.patch",
+        "experiments/E001-search-index/proposal.json",
+        "experiments/E001-search-index/result.json",
+        "experiments/E001-search-index/search_candidate.py",
+        "experiments/E002-scan-fast/bench.json",
+        "experiments/E002-scan-fast/diff.patch",
+        "experiments/E002-scan-fast/proposal.json",
+        "experiments/E002-scan-fast/result.json",
+        "experiments/E002-scan-fast/search_candidate.py",
+        "experiments/E003-scan-snapshot/bench.json",
+        "experiments/E003-scan-snapshot/proposal.json",
+        "experiments/E003-scan-snapshot/search_candidate.py",
+        "experiments/history.jsonl",
+        "logs/bootstrap/v2-install.txt",
+        "logs/bootstrap/v2-model-smoke.txt",
+        "logs/bootstrap/v2-version.txt",
+        "logs/inspect-run-001.json",
+        "logs/inspect-run-002.json",
+        "logs/inspect-run-003.json",
+        "logs/inspect-run-004.json",
+        "logs/runner.lock",
+        "logs/runs/run-20261022T125509Z.json",
+        "logs/runs/run-20261022T125510Z.json",
+        "logs/runs/run-20261022T130252Z.json",
+        "logs/runs/run-20261022T130253Z.json",
+        "logs/runs/run-20261022T130317Z.json",
+        "model-host/opencode.json",
+        "opencode.jsonc",
+        "proposals/2026-10-22T125357Z-model.json",
+        "proposals/2026-10-22T125509Z-model.json",
+        "proposals/model-proposal-1.json",
+        "rollback/E001-search-index-search.py.bak",
+        "rollback/E002-scan-fast-search.py.bak",
+        "state.json",
+        "state.json.bak",
+        "tests/__init__.py",
+        "tests/helpers.py",
+        "tests/test_bench.py",
+        "tests/test_checkpoint.py",
+        "tests/test_experiment.py",
+        "tests/test_model.py",
+        "tests/test_runner.py",
+        "tests/test_search.py",
+        "tests/test_security.py",
+        "tests/test_state.py",
+        "tools/__init__.py",
+        "tools/baseline.py",
+        "tools/bench.py",
+        "tools/campaign.py",
+        "tools/checkpoint.py",
+        "tools/experiment.py",
+        "tools/freeze.py",
+        "tools/inspect.py",
+        "tools/model.py",
+        "tools/modelrun",
+        "tools/oc2run",
+        "tools/runner.py",
+        "tools/search.py",
+        "tools/search_baseline.py",
+        "tools/security.py",
+        "tools/state.py"
+      ],
+      "label": "final",
+      "name": "ckpt-20261022T134946Z-final",
+      "schema": 1,
+      "sha256": "251412c09c013e038bded7b05c572d4d49104ad454224751655b2ae5b5329983",
+      "size_bytes": 81772
+    },
+    "verify": {
+      "archive": "checkpoints/ckpt-20261022T134946Z-final.tar.gz",
+      "expected_members": 91,
+      "expected_sha256": "251412c09c013e038bded7b05c572d4d49104ad454224751655b2ae5b5329983",
+      "members": 91,
+      "ok": true,
+      "sha256": "251412c09c013e038bded7b05c572d4d49104ad454224751655b2ae5b5329983"
+    }
+  },
+  "decisions": [
+    {
+      "accepted": true,
+      "baseline_cold_batch_ms": 343.228,
+      "baseline_median_batch_ms": 524.162,
+      "candidate_cold_batch_ms": 24.984,
+      "candidate_median_batch_ms": 24.411,
+      "cold_ratio": 0.0477,
+      "correctness": 1.0,
+      "reasons": [],
+      "stage": "post-promotion",
+      "tests_ok": true,
+      "warm_ratio": 0.0466
+    }
+  ],
+  "errors": [],
+  "git": {
+    "add": "",
+    "commit": "[main bfa4670] soo: run 4 checkpoint and evidence\n 22 files changed, 2898 insertions(+), 60 deletions(-)\n create mode 100644 campaign/bench-E002-scan-fast-before.json\n create mode 100644 campaign/bench-initial.json\n create mode 100644 campaign/run-30m.log\n create mode 100644 experiments/E002-scan-fast/bench.json\n create mode 100644 experiments/E002-scan-fast/diff.patch\n create mode 100644 experiments/E002-scan-fast/proposal.json\n create mode 100644 experiments/E002-scan-fast/result.json\n create mode 100644 experiments/E002-scan-fast/search_candidate.py\n create mode 100644 experiments/E003-scan-snapshot/bench.json\n create mode 100644 experiments/E003-scan-snapshot/proposal.json\n create mode 100644 experiments/E003-scan-snapshot/search_candidate.py\n create mode 100644 logs/inspect-run-004.json\n create mode 100644 logs/runs/run-20261022T134946Z.json\n create mode 100644 rollback/E002-scan-fast-search.py.bak\n create mode 100644 tools/campaign.py",
+    "committed": true,
+    "log": "bfa4670 soo: run 4 checkpoint and evidence\n5fc169b docs: finalize E001 evidence and validation notes\n7fd2188 soo: run 3 evidence log",
+    "stderr": ""
+  },
+  "inspect": {
+    "baseline_present": true,
+    "git": {
+      "log": "5fc169b docs: finalize E001 evidence and validation notes\n7fd2188 soo: run 3 evidence log\nbc93e11 soo: run 3 checkpoint and evidence\ne12467a soo: run 2 checkpoint and evidence\n6270eb6 docs: record E001 result and V1 free-tier adapter",
+      "status": "## main...origin/main\n M config/permissions.json\n M state.json\n M state.json.bak\n M tools/runner.py\n?? campaign/\n?? experiments/E002-scan-fast/\n?? experiments/E003-scan-snapshot/\n?? tools/campaign.py",
+      "status_ok": true
+    },
+    "host": {
+      "cpu_count": 8,
+      "disk_free_mb": 33733,
+      "machine": "aarch64",
+      "mem_available_mb": 890,
+      "node": {
+        "ok": true,
+        "output": "v24.18.0"
+      },
+      "opencode_v1": {
+        "ok": false,
+        "output": "TimeoutExpired: Command '['opencode', '--version']' timed out after 10 seconds"
+      },
+      "opencode_v2": {
+        "ok": false,
+        "output": "Error: EROFS: read-only file system, mkdir '/tmp'"
+      },
+      "platform": "Android-13-aarch64-64bit",
+      "python": "3.14.6"
+    },
+    "limitations": [
+      "same-UID worker; no container or kernel namespace",
+      "network egress restricted by environment and allowlist, not a netns"
+    ],
+    "protected_hashes": {
+      "REPORT.md": "1451f7be4bf755d4734c672920601f5427a01bcbb3a304f745d418da6a77d22c",
+      "benchmarks/corpus/mod_a.py": "aca092e361dd753750a8ff9db8c09c126efe04f8368b962315898ee8b2fe5800",
+      "benchmarks/corpus/mod_b.py": "46e7c5f87e54f5c142e2d112a7d4d2690d49de98607902fb4fe4e5b3174b0ac9",
+      "benchmarks/corpus/mod_c.py": "ca0b93606c629a4129c7678805653b9bf5f648d899f78222fefdbcae7e1839f8",
+      "benchmarks/corpus/mod_d.py": "4b38e5ed2c6de270c544f5bd274ddc06e2181fd279fd72d80dde1f6792df4416",
+      "benchmarks/corpus/mod_e.py": "3188a67d87f5f5b1184ef44a1a66bbae430691da0e6c37fdcc46aec8250cc69f",
+      "benchmarks/corpus/mod_f.py": "45898428227b83ebb03856d07adac0e0a423442f8fc203c768f93b39b95d4b92",
+      "benchmarks/corpus/mod_g.py": "0576091fd5278b8f9adbce7cd7d926ca7be0fb62dda7125224d818bbe5649789",
+      "benchmarks/corpus/mod_h.py": "ba2bf80874d5ffe33f7af801619d0828d29ab748bc1c15357556a51218212489",
+      "benchmarks/corpus/mod_i.py": "01b06c9a0382ce78bf64a66a8bf27681876cb7f17cc9365cf844c8159467d0ab",
+      "benchmarks/corpus/mod_j.py": "b1da614992ba64d7aebaa161b51ed2708938b0e04e6a8eab9eac5f7a758c0129",
+      "benchmarks/expected.json": "117225a76494e93edf8711c3e9297e37d5e80cbe1a983b22ff91c6560d29b259",
+      "benchmarks/results/baseline.json": "663c6c4b20ae029280be3de9fb488dff25298818d3c3944df3c3d363250fe018",
+      "benchmarks/tasks_dev.json": "d0a6fa68280c0dac5d40fd522f0e726364d0c81420988f030f172740a1f3a46b",
+      "benchmarks/tasks_heldout.json": "84ee3f644c8f28721fd835ff59d371d695c8d1a05baf271b10db47acb8e0f01c",
+      "config/limits.json": "2aaca3491d456fd3fd32c6ddb01b375e0639dc74c7a42537ec01547ad71e9cb2",
+      "config/permissions.json": "b17d4ae3de30e8ef1d2f532a14a66aa04eeaa4f47cd2cf9d5adbe0423e240518",
+      "model-host/opencode.json": "64297293b800d26aca9d02fe65813a30b8e62676bf1b9cf62c5ae25ccbb6bbec",
+      "rollback/E001-search-index-search.py.bak": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+      "tests/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "tests/helpers.py": "a41d5e1b7a4aaadd501fc74b97ccfc600febfab741d6481a1e3e2525cc7787af",
+      "tests/test_bench.py": "ed4fc2811f3a5248481177d7e215bc2112630870e99c96761117b2021b08a074",
+      "tests/test_checkpoint.py": "6d246f3ee4570fc8a3effdc5c768974b6d454534099896770ebb01fbf2d9b54f",
+      "tests/test_experiment.py": "623f78600fac45582d33ab96df7bfd249ea16a64ca5692e0849d0fbed2ca7a4c",
+      "tests/test_model.py": "095ba56859a90b619f8559353a973818e8fbcbfb3bf879589976151c859f714c",
+      "tests/test_runner.py": "8c5e56d860b90839c2c0c62e996385e989996f92b4b679e85b4887ece3bf86f3",
+      "tests/test_search.py": "a2d39d6b779abdf938591523c01d2a1d8b72f0772ef718bfa8d96fddbbf84ca5",
+      "tests/test_security.py": "19a42bc1c8eed24b6385f88aa87d7afb5df825fde49a7f4c471dfc223503977a",
+      "tests/test_state.py": "ccb3cdf08d8467efdfd15239319444d6ffdcc52cb9b3e8002416ff71e8eaef1c",
+      "tools/baseline.py": "cc4c83d183270519f7f3d025c27e630e71637936348b3014bd22820a44575593",
+      "tools/bench.py": "f124c93413ebfb50216f7935b13e21e72a9543bb46933d4fe43f069f6825be15",
+      "tools/campaign.py": "a93577512f145d73bd09076599cf934a4416a022ef0a29509e80ca8c0ac7e918",
+      "tools/checkpoint.py": "5a725986e2a90950cd146b1618374e176c3cafa74402d46dd2da89d83c9eda17",
+      "tools/experiment.py": "8ff66822e6274ebe49821734f08764e00e447b0e8750730d11d1da7dcccc5467",
+      "tools/freeze.py": "e372fccaacfc71114220c87ca01538ba48bed88b81c198ee1af7984b6e98fbcd",
+      "tools/inspect.py": "ddbad21bb5aa544dd0edb905f05ae9a0e9c54869b0a531832199eb8e24a4a48d",
+      "tools/model.py": "802ceef7bfb6a9e25bceb18adc00c477a64218ef97b978b775c89fca5e4c7396",
+      "tools/modelrun": "1aeaea30213baaa062bc6e3725fe2415a3da25222021125d659b08789968eb86",
+      "tools/oc2run": "25e6035d5daa562580465599a7b04d06b2487ee8a445e3712ee28e82c0511b65",
+      "tools/runner.py": "1b4db39ed27a6ad69fa3fb5385f10eadefe02f978865c6540c328309cdab9414",
+      "tools/search_baseline.py": "aef45062bdb1e762830dd5c7d8a8db0d2f6c9e7805177023e870d1fc189e516e",
+      "tools/security.py": "c9fc0dd9956c58b2a9b7c63a1442b6c80d25ad11612ed27b9cc54bf6349f187c",
+      "tools/state.py": "f89294f8c5e18a73b8aee9fea5cdc350c2201591c3e9042b74dad267e6f24708"
+    },
+    "run_id": "run-004",
+    "schema": 1,
+    "state": {
+      "completed": [
+        "E001-search-index"
+      ],
+      "current": null,
+      "failure_streak": 0,
+      "next_task": "Execute the next pending experiment, then one proposal call.",
+      "pending": [
+        "E002-scan-fast"
+      ],
+      "run_count": 4
+    },
+    "timestamp": "2026-10-22T13:49:26Z",
+    "workspace": {
+      "by_suffix": {
+        ".bak": 2,
+        ".json": 31,
+        ".jsonc": 1,
+        ".jsonl": 1,
+        ".lock": 1,
+        ".log": 1,
+        ".md": 6,
+        ".patch": 1,
+        ".py": 37,
+        ".txt": 3,
+        "<none>": 3
+      },
+      "file_count": 87,
+      "path": "/data/data/com.termux/files/home/projects/self-optimizing-opencode",
+      "test_files": 10,
+      "test_functions": 28,
+      "total_bytes": 415108,
+      "tree_hash": "c892ef3c96a9d918e6818690c7323f1dfad9a0f7419a607b358f822649869b4d"
+    }
+  },
+  "schema": 1,
+  "started_at": "2026-10-22T13:49:26Z",
+  "state": {
+    "baseline_path": "benchmarks/results/baseline.json",
+    "completed_experiments": [
+      "E001-search-index",
+      "E002-scan-fast"
+    ],
+    "created_at": "2026-10-22T12:54:08Z",
+    "current_experiment": null,
+    "experiments": {
+      "E001-search-index": {
+        "benchmark": {
+          "cold_batch_ms": 45.939,
+          "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+          "correct_queries": 20,
+          "correctness": 1.0,
+          "failed_queries": [],
+          "median_batch_ms": 45.759,
+          "min_batch_ms": 45.644,
+          "module": "active",
+          "p95_batch_ms": 46.765,
+          "per_query": {
+            "d01": {
+              "count": 17,
+              "ok": true,
+              "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+            },
+            "d02": {
+              "count": 2,
+              "ok": true,
+              "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+            },
+            "d03": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+            },
+            "d04": {
+              "count": 1,
+              "ok": true,
+              "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+            },
+            "d05": {
+              "count": 1,
+              "ok": true,
+              "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+            },
+            "d06": {
+              "count": 3,
+              "ok": true,
+              "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+            },
+            "d07": {
+              "count": 4,
+              "ok": true,
+              "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+            },
+            "d08": {
+              "count": 3,
+              "ok": true,
+              "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+            },
+            "d09": {
+              "count": 4,
+              "ok": true,
+              "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+            },
+            "d10": {
+              "count": 3,
+              "ok": true,
+              "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+            },
+            "d11": {
+              "count": 3,
+              "ok": true,
+              "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+            },
+            "d12": {
+              "count": 1,
+              "ok": true,
+              "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+            },
+            "d13": {
+              "count": 3,
+              "ok": true,
+              "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+            },
+            "d14": {
+              "count": 1,
+              "ok": true,
+              "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+            },
+            "d15": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+            },
+            "d16": {
+              "count": 1,
+              "ok": true,
+              "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+            },
+            "h01": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+            },
+            "h02": {
+              "count": 10,
+              "ok": true,
+              "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+            },
+            "h03": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+            },
+            "h04": {
+              "count": 3,
+              "ok": true,
+              "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+            }
+          },
+          "repetitions": 5,
+          "rss_kb": 24588,
+          "schema": 1,
+          "timestamp": "2026-10-22T12:54:22Z",
+          "total_queries": 20,
+          "warm_batches_ms": [
+            46.765,
+            45.851,
+            45.667,
+            45.644
+          ]
+        },
+        "candidate": "experiments/E001-search-index/search_candidate.py",
+        "checkpoint": "checkpoints/ckpt-20261022T125422Z-post-E001-search-index.json",
+        "decision": {
+          "accepted": true,
+          "baseline_cold_batch_ms": 343.228,
+          "baseline_median_batch_ms": 524.162,
+          "candidate_cold_batch_ms": 45.939,
+          "candidate_median_batch_ms": 45.759,
+          "cold_ratio": 0.0876,
+          "correctness": 1.0,
+          "reasons": [],
+          "stage": "post-promotion",
+          "tests_ok": true,
+          "warm_ratio": 0.0873
+        },
+        "status": "accepted",
+        "target": "tools/search.py",
+        "tests": true
+      },
+      "E002-scan-fast": {
+        "benchmark": {
+          "cold_batch_ms": 24.984,
+          "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+          "correct_queries": 20,
+          "correctness": 1.0,
+          "failed_queries": [],
+          "median_batch_ms": 24.411,
+          "min_batch_ms": 23.449,
+          "module": "active",
+          "p95_batch_ms": 27.886,
+          "per_query": {
+            "d01": {
+              "count": 17,
+              "ok": true,
+              "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+            },
+            "d02": {
+              "count": 2,
+              "ok": true,
+              "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+            },
+            "d03": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+            },
+            "d04": {
+              "count": 1,
+              "ok": true,
+              "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+            },
+            "d05": {
+              "count": 1,
+              "ok": true,
+              "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+            },
+            "d06": {
+              "count": 3,
+              "ok": true,
+              "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+            },
+            "d07": {
+              "count": 4,
+              "ok": true,
+              "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+            },
+            "d08": {
+              "count": 3,
+              "ok": true,
+              "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+            },
+            "d09": {
+              "count": 4,
+              "ok": true,
+              "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+            },
+            "d10": {
+              "count": 3,
+              "ok": true,
+              "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+            },
+            "d11": {
+              "count": 3,
+              "ok": true,
+              "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+            },
+            "d12": {
+              "count": 1,
+              "ok": true,
+              "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+            },
+            "d13": {
+              "count": 3,
+              "ok": true,
+              "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+            },
+            "d14": {
+              "count": 1,
+              "ok": true,
+              "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+            },
+            "d15": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+            },
+            "d16": {
+              "count": 1,
+              "ok": true,
+              "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+            },
+            "h01": {
+              "count": 4,
+              "ok": true,
+              "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+            },
+            "h02": {
+              "count": 10,
+              "ok": true,
+              "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+            },
+            "h03": {
+              "count": 2,
+              "ok": true,
+              "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+            },
+            "h04": {
+              "count": 3,
+              "ok": true,
+              "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+            }
+          },
+          "repetitions": 5,
+          "rss_kb": 24232,
+          "schema": 1,
+          "timestamp": "2026-10-22T13:49:46Z",
+          "total_queries": 20,
+          "warm_batches_ms": [
+            23.449,
+            27.886,
+            25.147,
+            23.674
+          ]
+        },
+        "candidate": "experiments/E002-scan-fast/search_candidate.py",
+        "checkpoint": "checkpoints/ckpt-20261022T134946Z-post-E002-scan-fast.json",
+        "decision": {
+          "accepted": true,
+          "baseline_cold_batch_ms": 343.228,
+          "baseline_median_batch_ms": 524.162,
+          "candidate_cold_batch_ms": 24.984,
+          "candidate_median_batch_ms": 24.411,
+          "cold_ratio": 0.0477,
+          "correctness": 1.0,
+          "reasons": [],
+          "stage": "post-promotion",
+          "tests_ok": true,
+          "warm_ratio": 0.0466
+        },
+        "status": "accepted",
+        "target": "tools/search.py",
+        "tests": true
+      }
+    },
+    "failed_experiments": {},
+    "failure_streak": 0,
+    "failures": {},
+    "last_benchmark": {
+      "cold_batch_ms": 24.984,
+      "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+      "correct_queries": 20,
+      "correctness": 1.0,
+      "failed_queries": [],
+      "median_batch_ms": 24.411,
+      "min_batch_ms": 23.449,
+      "module": "active",
+      "p95_batch_ms": 27.886,
+      "per_query": {
+        "d01": {
+          "count": 17,
+          "ok": true,
+          "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+        },
+        "d02": {
+          "count": 2,
+          "ok": true,
+          "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+        },
+        "d03": {
+          "count": 4,
+          "ok": true,
+          "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+        },
+        "d04": {
+          "count": 1,
+          "ok": true,
+          "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+        },
+        "d05": {
+          "count": 1,
+          "ok": true,
+          "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+        },
+        "d06": {
+          "count": 3,
+          "ok": true,
+          "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+        },
+        "d07": {
+          "count": 4,
+          "ok": true,
+          "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+        },
+        "d08": {
+          "count": 3,
+          "ok": true,
+          "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+        },
+        "d09": {
+          "count": 4,
+          "ok": true,
+          "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+        },
+        "d10": {
+          "count": 3,
+          "ok": true,
+          "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+        },
+        "d11": {
+          "count": 3,
+          "ok": true,
+          "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+        },
+        "d12": {
+          "count": 1,
+          "ok": true,
+          "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+        },
+        "d13": {
+          "count": 3,
+          "ok": true,
+          "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+        },
+        "d14": {
+          "count": 1,
+          "ok": true,
+          "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+        },
+        "d15": {
+          "count": 2,
+          "ok": true,
+          "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+        },
+        "d16": {
+          "count": 1,
+          "ok": true,
+          "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+        },
+        "h01": {
+          "count": 4,
+          "ok": true,
+          "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+        },
+        "h02": {
+          "count": 10,
+          "ok": true,
+          "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+        },
+        "h03": {
+          "count": 2,
+          "ok": true,
+          "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+        },
+        "h04": {
+          "count": 3,
+          "ok": true,
+          "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+        }
+      },
+      "repetitions": 5,
+      "rss_kb": 24232,
+      "schema": 1,
+      "timestamp": "2026-10-22T13:49:46Z",
+      "total_queries": 20,
+      "warm_batches_ms": [
+        23.449,
+        27.886,
+        25.147,
+        23.674
+      ]
+    },
+    "last_checkpoint": "checkpoints/ckpt-20261022T134946Z-final.json",
+    "last_model_call": {
+      "elapsed_ms": 46360.225,
+      "error": null,
+      "ok": true,
+      "path": "proposals/2026-10-22T125509Z-model.json",
+      "proposal": {
+        "_raw_text": "{\"weakness\":\"Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change.\",\"hypothesis\":\"A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.\",\"metric\":\"median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...\",\"change\":\"Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.\",\"risk\":\"Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.\",\"reversible\":true,\"expected_files\":[\"search/index.py\",\"search/query.py\",\"benchmarks/bench_search.py\",\"tests/test_search_correctness.py\"]}",
+        "change": "Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.",
+        "expected_files": [
+          "search/index.py",
+          "search/query.py",
+          "benchmarks/bench_search.py",
+          "tests/test_search_correctness.py"
+        ],
+        "hypothesis": "A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.",
+        "metric": "median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...",
+        "reversible": true,
+        "risk": "Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.",
+        "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
+      }
+    },
+    "last_run_finished": "2026-10-22T13:49:46Z",
+    "last_run_seconds": 20.173,
+    "last_run_started": "2026-10-22T13:49:26Z",
+    "model_calls": 1,
+    "model_proposals": [
+      {
+        "_raw_text": "{\"weakness\":\"Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change.\",\"hypothesis\":\"A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.\",\"metric\":\"median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...\",\"change\":\"Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.\",\"risk\":\"Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.\",\"reversible\":true,\"expected_files\":[\"search/index.py\",\"search/query.py\",\"benchmarks/bench_search.py\",\"tests/test_search_correctness.py\"]}",
+        "change": "Add stage timers around corpus load/normalize/score/assemble, then reuse a single parsed corpus per batch keyed by corpus_sha256, falling back to fresh parse on hash mismatch; keep result ordering and output bytes unchanged.",
+        "expected_files": [
+          "search/index.py",
+          "search/query.py",
+          "benchmarks/bench_search.py",
+          "tests/test_search_correctness.py"
+        ],
+        "hypothesis": "A large share of the remaining ~45.8ms batch time is repeated per-query corpus normalization/tokenization work; reusing one hash-keyed parsed corpus per batch, guarded by corpus_sha256, should cut median and p95 batch latency by at least 20% without changing any per-query sha256 or counts.",
+        "metric": "median_batch_ms, p95_batch_ms, cold_batch_ms, rss_kb from the schema-1 benchmark; gate on correctness 1.0, zero failed_queries, and identical per-query sha256/count for all 20 queries versus corpus_sha256 37c5a6ee...",
+        "reversible": true,
+        "risk": "Cache keyed incorrectly or reused after mid-batch corpus mutation could return stale or wrong results, and retained parsed state could grow RSS further; mitigate by strict corpus_sha256 keying, hash-mismatch invalidation, and per-query sha256 equality checks.",
+        "weakness": "Warm batch latency is now ~45.8ms with cold ~45.9ms, so nearly all remaining time is fixed per-query work; no stage breakdown exists to show whether corpus normalization, hashing, or result assembly dominates, and RSS rose from 22016KB to 24588KB after the index change."
+      }
+    ],
+    "next_task": "E002-scan-fast accepted; review the next gate.",
+    "pending_experiments": [],
+    "run_count": 4,
+    "schema": 1,
+    "tests": {
+      "duration_ms": 5282.551,
+      "ok": true,
+      "returncode": 0,
+      "summary": "OK",
+      "tail": "test_outside_write_denied (test_security.SecurityTests.test_outside_write_denied) ... ok\ntest_protected_write_denied (test_security.SecurityTests.test_protected_write_denied) ... ok\ntest_secret_name_denied (test_security.SecurityTests.test_secret_name_denied) ... ok\ntest_symlink_escape_denied (test_security.SecurityTests.test_symlink_escape_denied) ... ok\ntest_append_history_and_state_md (test_state.StateTests.test_append_history_and_state_md) ... ok\ntest_init_save_and_recover_backup (test_state.StateTests.test_init_save_and_recover_backup) ... ok\ntest_lock_is_exclusive_and_stale_safe (test_state.StateTests.test_lock_is_exclusive_and_stale_safe) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 4.131s\n\nOK",
+      "tests": 28,
+      "timed_out": false
+    },
+    "updated_at": "2026-10-22T13:49:46Z"
+  },
+  "steps": [
+    {
+      "mem_available_mb": 890,
+      "ok": true,
+      "step": "inspect"
+    },
+    {
+      "experiment": "E002-scan-fast",
+      "manifest": "checkpoints/ckpt-20261022T134940Z-pre-E002-scan-fast.json",
+      "step": "checkpoint",
+      "verify": {
+        "archive": "checkpoints/ckpt-20261022T134940Z-pre-E002-scan-fast.tar.gz",
+        "expected_members": 88,
+        "expected_sha256": "dd75b91da5b660348ecdb9e8f941d10939bf2153d788995e646f8c515d4f6122",
+        "members": 88,
+        "ok": true,
+        "sha256": "dd75b91da5b660348ecdb9e8f941d10939bf2153d788995e646f8c515d4f6122"
+      }
+    },
+    {
+      "experiment": "E002-scan-fast",
+      "result": {
+        "cold_batch_ms": 29.173,
+        "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+        "correct_queries": 20,
+        "correctness": 1.0,
+        "failed_queries": [],
+        "median_batch_ms": 28.093,
+        "min_batch_ms": 27.171,
+        "module": "experiments/E002-scan-fast/search_candidate.py",
+        "p95_batch_ms": 30.57,
+        "per_query": {
+          "d01": {
+            "count": 17,
+            "ok": true,
+            "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+          },
+          "d02": {
+            "count": 2,
+            "ok": true,
+            "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+          },
+          "d03": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+          },
+          "d04": {
+            "count": 1,
+            "ok": true,
+            "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+          },
+          "d05": {
+            "count": 1,
+            "ok": true,
+            "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+          },
+          "d06": {
+            "count": 3,
+            "ok": true,
+            "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+          },
+          "d07": {
+            "count": 4,
+            "ok": true,
+            "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+          },
+          "d08": {
+            "count": 3,
+            "ok": true,
+            "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+          },
+          "d09": {
+            "count": 4,
+            "ok": true,
+            "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+          },
+          "d10": {
+            "count": 3,
+            "ok": true,
+            "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+          },
+          "d11": {
+            "count": 3,
+            "ok": true,
+            "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+          },
+          "d12": {
+            "count": 1,
+            "ok": true,
+            "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+          },
+          "d13": {
+            "count": 3,
+            "ok": true,
+            "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+          },
+          "d14": {
+            "count": 1,
+            "ok": true,
+            "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+          },
+          "d15": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+          },
+          "d16": {
+            "count": 1,
+            "ok": true,
+            "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+          },
+          "h01": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+          },
+          "h02": {
+            "count": 10,
+            "ok": true,
+            "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+          },
+          "h03": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+          },
+          "h04": {
+            "count": 3,
+            "ok": true,
+            "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+          }
+        },
+        "repetitions": 5,
+        "rss_kb": 24232,
+        "schema": 1,
+        "timestamp": "2026-10-22T13:49:40Z",
+        "total_queries": 20,
+        "warm_batches_ms": [
+          30.57,
+          27.557,
+          28.628,
+          27.171
+        ]
+      },
+      "step": "candidate_bench"
+    },
+    {
+      "experiment": "E002-scan-fast",
+      "result": {
+        "backup": "rollback/E002-scan-fast-search.py.bak",
+        "candidate": "experiments/E002-scan-fast/search_candidate.py",
+        "diff": "experiments/E002-scan-fast/diff.patch",
+        "promoted": true,
+        "promoted_at": "2026-10-22T13:49:40Z",
+        "target": "tools/search.py"
+      },
+      "step": "promote"
+    },
+    {
+      "bench": {
+        "cold_batch_ms": 24.984,
+        "corpus_sha256": "37c5a6ee1e32d721c21057a5e1120ab93181a702abbb0e0f87b5a4d598440a54",
+        "correct_queries": 20,
+        "correctness": 1.0,
+        "failed_queries": [],
+        "median_batch_ms": 24.411,
+        "min_batch_ms": 23.449,
+        "module": "active",
+        "p95_batch_ms": 27.886,
+        "per_query": {
+          "d01": {
+            "count": 17,
+            "ok": true,
+            "sha256": "3750f011bc21613f6787648a5bef8980fcae59b6df048b17d89fa272970fcb22"
+          },
+          "d02": {
+            "count": 2,
+            "ok": true,
+            "sha256": "cae96eac34408f6d945e54c98abfdebacbe0c50f0f06d5c6734f41baa99cfe40"
+          },
+          "d03": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9957aa6dfaedc868386eb04a44c2fdd0159efdc949f3afd5f862665a66dca95a"
+          },
+          "d04": {
+            "count": 1,
+            "ok": true,
+            "sha256": "bb5f13afa394f08d62ea11de0ec36c8fd4c06a96b9263c183707cd5a798bd5fc"
+          },
+          "d05": {
+            "count": 1,
+            "ok": true,
+            "sha256": "49d9ef8ab5693bf1b70f285da79e70fe4a27a9d40282bb20d98dbd043a25b9af"
+          },
+          "d06": {
+            "count": 3,
+            "ok": true,
+            "sha256": "2ef2fb3874721656d3ea6400e82f9a99b166bd74a59da4c2c6c09d11e7542da8"
+          },
+          "d07": {
+            "count": 4,
+            "ok": true,
+            "sha256": "92011a0386473ff1e872853ce32292a65d6c710a6c8cbee99a23494512dda20f"
+          },
+          "d08": {
+            "count": 3,
+            "ok": true,
+            "sha256": "5cc9261ca80c2e91b458030375c9ba3ef9e1112765c3c69fa6e19b1df70cd3ce"
+          },
+          "d09": {
+            "count": 4,
+            "ok": true,
+            "sha256": "f5ade7e34cce28abea63b0e00a7b06b15eda0ae4dacddc08e8f8caee87b7f6e1"
+          },
+          "d10": {
+            "count": 3,
+            "ok": true,
+            "sha256": "dec2e3272cb99d1be3c1f832b3626636274f3b4dbc085f5f8c9e414a04262d60"
+          },
+          "d11": {
+            "count": 3,
+            "ok": true,
+            "sha256": "f9ce343ddbdcd2bb1b5b9dc140f1cf129cc1710d32cb7674337d3891bc4eee80"
+          },
+          "d12": {
+            "count": 1,
+            "ok": true,
+            "sha256": "ae24b2d0d5bad587af24e0a89387e1c24c659d88838a2d8f6482e2a23c82826b"
+          },
+          "d13": {
+            "count": 3,
+            "ok": true,
+            "sha256": "17a4b8f9e22e1876efb8b0f6bfa63c1551ef27255b830666bfed1be3f4870fcd"
+          },
+          "d14": {
+            "count": 1,
+            "ok": true,
+            "sha256": "002c6ff81fdfedcc5f73b623a51dc19c76382b8396c49ceaf85bcf14d8810c92"
+          },
+          "d15": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f81447d8404bf21dc5292b0e345c4784f7c76aa1ba1b054ff495c1e45d0bdff7"
+          },
+          "d16": {
+            "count": 1,
+            "ok": true,
+            "sha256": "67593c0c02971fc8eb88510c371337fa180be48328693d2023c632e67c6ad125"
+          },
+          "h01": {
+            "count": 4,
+            "ok": true,
+            "sha256": "9fd643e3e502048be53846bf6848e48feb184952eaeb6cb2554f706974cc6c58"
+          },
+          "h02": {
+            "count": 10,
+            "ok": true,
+            "sha256": "a5f99f49647a2e9e7caf2f63489a76adbf523a75370d9a8348e12a21cba99802"
+          },
+          "h03": {
+            "count": 2,
+            "ok": true,
+            "sha256": "f91b1b8f4719314b88bb01825e0841f66a6eddd8827652db22fc39edbe2b181c"
+          },
+          "h04": {
+            "count": 3,
+            "ok": true,
+            "sha256": "9c834caafb0e257d36523b44a6a58cc2716f324d2ecadcd518187aba248e5d4d"
+          }
+        },
+        "repetitions": 5,
+        "rss_kb": 24232,
+        "schema": 1,
+        "timestamp": "2026-10-22T13:49:46Z",
+        "total_queries": 20,
+        "warm_batches_ms": [
+          23.449,
+          27.886,
+          25.147,
+          23.674
+        ]
+      },
+      "decision": {
+        "accepted": true,
+        "baseline_cold_batch_ms": 343.228,
+        "baseline_median_batch_ms": 524.162,
+        "candidate_cold_batch_ms": 24.984,
+        "candidate_median_batch_ms": 24.411,
+        "cold_ratio": 0.0477,
+        "correctness": 1.0,
+        "reasons": [],
+        "stage": "post-promotion",
+        "tests_ok": true,
+        "warm_ratio": 0.0466
+      },
+      "experiment": "E002-scan-fast",
+      "step": "verify",
+      "tests": {
+        "duration_ms": 5282.551,
+        "ok": true,
+        "returncode": 0,
+        "summary": "OK",
+        "tail": "test_outside_write_denied (test_security.SecurityTests.test_outside_write_denied) ... ok\ntest_protected_write_denied (test_security.SecurityTests.test_protected_write_denied) ... ok\ntest_secret_name_denied (test_security.SecurityTests.test_secret_name_denied) ... ok\ntest_symlink_escape_denied (test_security.SecurityTests.test_symlink_escape_denied) ... ok\ntest_append_history_and_state_md (test_state.StateTests.test_append_history_and_state_md) ... ok\ntest_init_save_and_recover_backup (test_state.StateTests.test_init_save_and_recover_backup) ... ok\ntest_lock_is_exclusive_and_stale_safe (test_state.StateTests.test_lock_is_exclusive_and_stale_safe) ... ok\n\n----------------------------------------------------------------------\nRan 28 tests in 4.131s\n\nOK",
+        "tests": 28,
+        "timed_out": false
+      }
+    },
+    {
+      "checkpoint": {
+        "archive": "checkpoints/ckpt-20261022T134946Z-post-E002-scan-fast.tar.gz",
+        "created_at": "2026-10-22T13:49:46Z",
+        "file_count": 90,
+        "files": [
+          ".gitignore",
+          ".opencode/agents/propose.md",
+          "ARCHITECTURE.md",
+          "README.md",
+          "REPORT.md",
+          "ROADMAP.md",
+          "STATE.md",
+          "benchmarks/corpus/mod_a.py",
+          "benchmarks/corpus/mod_b.py",
+          "benchmarks/corpus/mod_c.py",
+          "benchmarks/corpus/mod_d.py",
+          "benchmarks/corpus/mod_e.py",
+          "benchmarks/corpus/mod_f.py",
+          "benchmarks/corpus/mod_g.py",
+          "benchmarks/corpus/mod_h.py",
+          "benchmarks/corpus/mod_i.py",
+          "benchmarks/corpus/mod_j.py",
+          "benchmarks/expected.json",
+          "benchmarks/results/baseline.json",
+          "benchmarks/tasks_dev.json",
+          "benchmarks/tasks_heldout.json",
+          "campaign/bench-E002-scan-fast-before.json",
+          "campaign/bench-initial.json",
+          "campaign/run-30m.log",
+          "config/environments.json",
+          "config/initial_state.json",
+          "config/install.json",
+          "config/limits.json",
+          "config/model.json",
+          "config/permissions.json",
+          "experiments/E001-search-index/diff.patch",
+          "experiments/E001-search-index/proposal.json",
+          "experiments/E001-search-index/result.json",
+          "experiments/E001-search-index/search_candidate.py",
+          "experiments/E002-scan-fast/bench.json",
+          "experiments/E002-scan-fast/diff.patch",
+          "experiments/E002-scan-fast/proposal.json",
+          "experiments/E002-scan-fast/search_candidate.py",
+          "experiments/E003-scan-snapshot/bench.json",
+          "experiments/E003-scan-snapshot/proposal.json",
+          "experiments/E003-scan-snapshot/search_candidate.py",
+          "experiments/history.jsonl",
+          "logs/bootstrap/v2-install.txt",
+          "logs/bootstrap/v2-model-smoke.txt",
+          "logs/bootstrap/v2-version.txt",
+          "logs/inspect-run-001.json",
+          "logs/inspect-run-002.json",
+          "logs/inspect-run-003.json",
+          "logs/inspect-run-004.json",
+          "logs/runner.lock",
+          "logs/runs/run-20261022T125509Z.json",
+          "logs/runs/run-20261022T125510Z.json",
+          "logs/runs/run-20261022T130252Z.json",
+          "logs/runs/run-20261022T130253Z.json",
+          "logs/runs/run-20261022T130317Z.json",
+          "model-host/opencode.json",
+          "opencode.jsonc",
+          "proposals/2026-10-22T125357Z-model.json",
+          "proposals/2026-10-22T125509Z-model.json",
+          "proposals/model-proposal-1.json",
+          "rollback/E001-search-index-search.py.bak",
+          "rollback/E002-scan-fast-search.py.bak",
+          "state.json",
+          "state.json.bak",
+          "tests/__init__.py",
+          "tests/helpers.py",
+          "tests/test_bench.py",
+          "tests/test_checkpoint.py",
+          "tests/test_experiment.py",
+          "tests/test_model.py",
+          "tests/test_runner.py",
+          "tests/test_search.py",
+          "tests/test_security.py",
+          "tests/test_state.py",
+          "tools/__init__.py",
+          "tools/baseline.py",
+          "tools/bench.py",
+          "tools/campaign.py",
+          "tools/checkpoint.py",
+          "tools/experiment.py",
+          "tools/freeze.py",
+          "tools/inspect.py",
+          "tools/model.py",
+          "tools/modelrun",
+          "tools/oc2run",
+          "tools/runner.py",
+          "tools/search.py",
+          "tools/search_baseline.py",
+          "tools/security.py",
+          "tools/state.py"
+        ],
+        "label": "post-E002-scan-fast",
+        "name": "ckpt-20261022T134946Z-post-E002-scan-fast",
+        "schema": 1,
+        "sha256": "180f6a5a865ba0c969637e02584113d0761d26beab31fd1a7cd31eb7d100485f",
+        "size_bytes": 81205
+      },
+      "experiment": "E002-scan-fast",
+      "step": "accepted"
+    }
+  ]
+}
