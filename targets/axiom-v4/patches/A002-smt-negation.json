@@ -1,0 +1,10 @@
+{
+  "note": "Regression coverage for the integer gap in a negated difference bound and for equality/disequality interaction in the SMT frontend. Both answers are re-checked through the public verify path.",
+  "edits": [],
+  "create": [
+    {
+      "file": "crates/axiom-smt/tests/negation.rs",
+      "content": "use axiom::Budget;\nuse axiom_core::{Engine, Outcome, Problem, Verdict};\nuse axiom_smt::SmtEngine;\n\nfn solve(source: &str) -> Outcome {\n    let problem = Problem::smt(source);\n    let mut budget = Budget::steps(1_000_000);\n    let mut engine = SmtEngine::new();\n    let outcome = engine.solve(&problem, &mut budget);\n    engine\n        .verify(&problem, &outcome)\n        .expect(\"every SMT answer must carry checkable evidence\");\n    outcome\n}\n\n#[test]\nfn the_integer_gap_in_a_negated_difference_bound_is_exact() {\n    let outcome = solve(\n        \"(declare-fun x () Int) (declare-fun y () Int) \\\n         (assert (> (- y x) 3)) (assert (< (- y x) 4)) (check-sat)\",\n    );\n    assert_eq!(outcome.verdict, Verdict::Impossible, \"{outcome:?}\");\n}\n\n#[test]\nfn disequality_contradicts_equality() {\n    let outcome = solve(\n        \"(declare-fun x () Int) (declare-fun y () Int) \\\n         (assert (= x y)) (assert (not (= x y))) (check-sat)\",\n    );\n    assert_eq!(outcome.verdict, Verdict::Impossible, \"{outcome:?}\");\n}\n"
+    }
+  ]
+}

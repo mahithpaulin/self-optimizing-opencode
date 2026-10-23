@@ -1,0 +1,290 @@
+[
+  {
+    "id": "A001-peak-rss",
+    "title": "Record peak RSS instead of a post-run point sample",
+    "kind": "correctness",
+    "priority": 10,
+    "files": [
+      "src/bench.rs",
+      "tests/bench_metrics.rs"
+    ],
+    "description": "The benchmark harness already exposes peak_rss_kb (VmHWM), but Bench::run and Bench::run_once store rss_kb (VmRSS sampled after the closure, when the solver has already dropped). Switch both rows to peak_rss_kb and add a small integration test for the accessor. This is ROADMAP 2.1 / F-03. Do not add a performance claim: the column is process-wide.",
+    "deterministic_first": true,
+    "patch": "patches/A001-peak-rss.json",
+    "max_attempts": 1,
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false
+  },
+  {
+    "id": "A002-smt-negation",
+    "title": "Regression tests for exact SMT integer negation and disequality",
+    "kind": "test",
+    "priority": 20,
+    "files": [
+      "crates/axiom-smt/tests/negation.rs"
+    ],
+    "description": "Add integration tests for the integer gap in a negated difference bound (y - x > 3 and y - x < 4 is Impossible over integers but satisfiable over reals) and for disequality contradicting equality. Both answers must be Impossible and must pass the public verify path. This covers the negation boundary that the existing SMT tests do not exercise directly.",
+    "deterministic_first": true,
+    "patch": "patches/A002-smt-negation.json",
+    "max_attempts": 1,
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom-smt",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false
+  },
+  {
+    "id": "A003-fol-equality-negative",
+    "title": "Pin FOL equality honesty on negative goals",
+    "kind": "test",
+    "priority": 30,
+    "files": [
+      "crates/axiom-prover/tests/equality_negative.rs"
+    ],
+    "description": "Add regression tests that an unrelated ground equality goal is Unknown or ResourceLimit (never Refuted, never evidence-bearing) and that contradicting a ground equality is not Proved. These guard the documented 'no Refuted verdict' contract.",
+    "deterministic_first": true,
+    "patch": "patches/A003-fol-equality-negative.json",
+    "max_attempts": 1,
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom-prover",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false
+  },
+  {
+    "id": "A004-planning-negative-precondition",
+    "title": "Cover negated STRIPS preconditions end to end",
+    "kind": "test",
+    "priority": 40,
+    "files": [
+      "crates/axiom-planning/tests/negative_preconditions.rs"
+    ],
+    "description": "The PDDL parser advertises :negative-preconditions, but the checked tests only use positive preconditions. Add one satisfiable plan and one exhaustion case, both replayed through PlanningEngine::verify.",
+    "deterministic_first": true,
+    "patch": "patches/A004-planning-negative-precondition.json",
+    "max_attempts": 1,
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom-planning",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false
+  },
+  {
+    "id": "A005-docs-peak-rss",
+    "title": "Reconcile peak-RSS documentation with A001",
+    "kind": "docs",
+    "priority": 50,
+    "files": [
+      "docs/v4/CAPABILITY_MATRIX.md",
+      "docs/v4/KNOWN_LIMITATIONS.md",
+      "docs/ROADMAP.md"
+    ],
+    "description": "After A001 is accepted, update the capability matrix, known limitations, and roadmap to state exactly what changed: run/run_once now record VmHWM, the value is process-wide, and per-row memory claims still need one process per claim. Keep the matrix status Partial; do not overclaim.",
+    "deterministic_first": true,
+    "patch": "patches/A005-docs-peak-rss.json",
+    "depends_on": [
+      "A001-peak-rss"
+    ],
+    "max_attempts": 1,
+    "cargo_test": [
+      "cargo",
+      "check",
+      "--workspace"
+    ],
+    "benchmark": false
+  },
+  {
+    "id": "A006-db-third-index",
+    "title": "Index the third argument of wide relations",
+    "kind": "performance",
+    "priority": 60,
+    "files": [
+      "src/db.rs",
+      "benches/kernel.rs",
+      "docs/v4/CAPABILITY_MATRIX.md"
+    ],
+    "focus": [
+      {
+        "file": "src/db.rs",
+        "start": 1,
+        "end": 300
+      },
+      {
+        "file": "benches/kernel.rs",
+        "start": 250,
+        "end": 345
+      }
+    ],
+    "description": "Add a by_third index for predicates of arity >= 3, mirroring by_second: field, resize in ensure, insert in insert, handle candidates(Some((2, key))), and include it in index_bytes. Add a unit test that a third-argument query selects only matching tuples. Add a benchmark row only if a ternary fixture is added; otherwise state that no performance claim is made. Do not change the semantics of unindexed positions: they must keep the full-scan fallback.",
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": true,
+    "max_attempts": 2,
+    "metric": "time"
+  },
+  {
+    "id": "A007-smt-lib-printer",
+    "title": "Add an SMT-LIB printer for the parsed subset",
+    "kind": "feature",
+    "priority": 70,
+    "files": [
+      "crates/axiom-smt/src/parse.rs",
+      "crates/axiom-smt/src/lib.rs"
+    ],
+    "focus": [
+      {
+        "file": "crates/axiom-smt/src/parse.rs",
+        "start": 1,
+        "end": 380
+      }
+    ],
+    "description": "Give SmtProblem (and the reachable AST nodes) a deterministic to_smtlib/Display printer for exactly the supported subset: set-logic, declare-fun/declare-const, assert, check-sat, push/pop. Add round-trip tests: parse -> print -> parse yields the same structure, and the printed text still solves. Do not invent syntax the parser does not read. No solver changes.",
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom-smt",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false,
+    "max_attempts": 2
+  },
+  {
+    "id": "A008-datalog-join-order",
+    "title": "Conservative bound-first join ordering for Datalog bodies",
+    "kind": "performance",
+    "priority": 80,
+    "files": [
+      "src/solver_fwd.rs",
+      "src/program.rs",
+      "tests/soundness.rs"
+    ],
+    "focus": [
+      {
+        "file": "src/solver_fwd.rs",
+        "start": 150,
+        "end": 430
+      }
+    ],
+    "description": "Implement a conservative, deterministic heuristic that evaluates positive body literals with more already-bound variables first, while preserving the source body for derivation records, negation checks, and the public API. The seed position from semi-naive evaluation must remain valid. If a safe implementation is not possible without changing those invariants, return no change and explain why rather than weakening them. Add a differential test (naive vs semi-naive closure) on a rule whose best order differs from source order.",
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": true,
+    "max_attempts": 2,
+    "metric": "time"
+  },
+  {
+    "id": "A009-fol-equality-coverage",
+    "title": "Expand FOL equality congruence coverage",
+    "kind": "correctness",
+    "priority": 90,
+    "files": [
+      "crates/axiom-prover/src/fol.rs",
+      "crates/axiom-prover/tests/equality_negative.rs"
+    ],
+    "focus": [
+      {
+        "file": "crates/axiom-prover/src/fol.rs",
+        "start": 1,
+        "end": 260
+      }
+    ],
+    "description": "Add focused tests for ground equality congruence through nested function terms and for equality axioms under a universal premise. If a test exposes a real defect in normalize_ground_equality, fix it and keep the independent kernel check. If no defect is found, tests only; never change the no-Refuted contract.",
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom-prover",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": false,
+    "max_attempts": 2
+  },
+  {
+    "id": "A010-docs-claim-audit",
+    "title": "Audit and reconcile v4 capability claims",
+    "kind": "docs",
+    "priority": 100,
+    "files": [
+      "docs/v4/CAPABILITY_MATRIX.md",
+      "docs/v4/KNOWN_LIMITATIONS.md"
+    ],
+    "focus": [
+      {
+        "file": "docs/v4/CAPABILITY_MATRIX.md",
+        "start": 1,
+        "end": 240
+      }
+    ],
+    "description": "Compare the capability matrix and known limitations for concrete claims that disagree. Make a small documentation-only correction; cite the source file or test that supports each corrected row. Do not upgrade a status without a named test, and do not remove a limitation. This is a fallback task when a code change is not justified.",
+    "cargo_test": [
+      "cargo",
+      "check",
+      "--workspace"
+    ],
+    "benchmark": false,
+    "max_attempts": 1
+  },
+  {
+    "id": "A011-rdl-chain-memory",
+    "title": "Reduce per-assignment state rebuilding in rdl_chain_sat",
+    "kind": "performance",
+    "priority": 110,
+    "files": [
+      "src/theory.rs",
+      "src/bench.rs"
+    ],
+    "focus": [
+      {
+        "file": "src/theory.rs",
+        "start": 1,
+        "end": 420
+      }
+    ],
+    "description": "ROADMAP 3.4 records that rdl_chain_sat allocates ~667 MB for 51 difference constraints because the driver rebuilds state per assignment. Make one focused allocation reduction that keeps every theory certificate checkable. Measure with a dedicated process (VmHWM) before and after; do not claim a gain without the measurement. If the change cannot be made safely in one iteration, return no change and a precise diagnosis.",
+    "cargo_test": [
+      "cargo",
+      "test",
+      "-p",
+      "axiom",
+      "--lib",
+      "--tests"
+    ],
+    "benchmark": true,
+    "max_attempts": 1,
+    "metric": "memory"
+  }
+]
