@@ -15,7 +15,7 @@
   "create": [
     {
       "file": "tests/bench_metrics.rs",
-      "content": "use axiom::bench::{peak_rss_kb, rss_kb};\n\n#[test]\nfn peak_rss_is_not_below_current_rss() {\n    assert!(\n        peak_rss_kb() >= rss_kb(),\n        \"VmHWM must be at least the current VmRSS (Linux /proc/self/status)\"\n    );\n}\n"
+      "content": "use axiom::bench::{peak_rss_kb, rss_kb};\n\n#[test]\nfn peak_rss_is_not_below_current_rss() {\n    // Read the point sample first. VmHWM is monotonic, so a later read can\n    // only be higher; the reverse order compares a stale peak with a newer\n    // RSS and flakes under the parallel test harness.\n    let current = rss_kb();\n    let peak = peak_rss_kb();\n    assert!(\n        peak >= current,\n        \"VmHWM must be at least the current VmRSS (peak={peak} kB, current={current} kB)\"\n    );\n}\n"
     }
   ]
 }
