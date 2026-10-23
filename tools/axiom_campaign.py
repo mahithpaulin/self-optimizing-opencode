@@ -1410,6 +1410,9 @@ class Campaign:
                 break
             task = self.next_task()
             if task is None:
+                if soak_index >= 2:
+                    self.event("soak_complete", soaks=soak_index)
+                    break
                 soak_need = float(self.config["limits"]["min_remaining_seconds"]) + 300.0
                 if self.remaining() < soak_need:
                     break
