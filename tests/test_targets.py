@@ -77,9 +77,8 @@ class TargetManifestTests(unittest.TestCase):
         ids = [task["id"] for task in tasks]
         self.assertEqual(ids, sorted(ids))
         self.assertEqual(ids[0], "A001-peak-rss")
-        self.assertIn("A011-rdl-chain-memory", ids)
-        memory = next(task for task in tasks if task["id"] == "A011-rdl-chain-memory")
-        self.assertEqual(memory["metric"], "memory")
+        self.assertEqual(ids[-1], "A010-docs-claim-audit")
+        self.assertTrue(all(task["metric"] == "time" for task in tasks))
 
     def test_missing_required_field_is_rejected(self) -> None:
         config = base_config()

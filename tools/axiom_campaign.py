@@ -1517,7 +1517,8 @@ class Campaign:
             f"- Started: {state.get('started_at')}",
             f"- Finished: {state.get('finished_at')}",
             f"- Wall time: {state.get('elapsed_minutes')} min of {state.get('minutes')} budgeted",
-            f"- Iterations: {state.get('iterations')} ({len(accepted)} accepted, {len(rejected)} rejected)",
+            f"- Attempts: {len(accepted) + len(rejected)} ({len(accepted)} accepted, "
+            f"{len(rejected)} rejected); checkpoints: {state.get('iterations')}",
             f"- Head: `{self.head()}`",
             "",
             "## Status",
@@ -1578,10 +1579,7 @@ class Campaign:
         lines += ["", "## Measured benchmark comparison", ""]
         if final_bench and final_bench.get("ok") and final_bench.get("rows"):
             rows = final_bench["rows"]
-            lines += [
-                "| Row | Baseline ms | Final ms | Wall ratio | Baseline rss kB | Final rss kB | RSS ratio |",
-                "|---|---:|---:|---:|---:|---:|---:|",
-            ]
+            lines += ["| Row | Baseline ms | Final ms | Wall ratio |", "|---|---:|---:|---:|"]
             for name, before in self.baseline_bench.items():
                 after = rows.get(name)
                 if not after:
@@ -1589,17 +1587,17 @@ class Campaign:
                 base = float(before.get("wall_ms", 0.0))
                 now = float(after.get("wall_ms", 0.0))
                 ratio = now / base if base else 0.0
-                base_rss = int(before.get("rss_kb", 0))
-                now_rss = int(after.get("rss_kb", 0))
-                rss_ratio = f"{now_rss / base_rss:.3f}" if base_rss and now_rss else "-"
-                lines.append(
-                    f"| `{name}` | {base:.2f} | {now:.2f} | {ratio:.3f} | "
-                    f"{base_rss or '-'} | {now_rss or '-'} | {rss_ratio} |"
-                )
+                lines.append(f"| `{name}` | {base:.2f} | {now:.2f} | {ratio:.3f} |")
             lines.append("")
             lines.append(
                 "Best-of-two wall times on a shared runner; treat ratios as diagnostic, not a "
                 "performance claim. Deterministic counters in the bench log are the stronger signal."
+            )
+            lines.append("")
+            lines.append(
+                "RSS is recorded in `final.json` as a process-wide high-water mark "
+                "(`VmHWM`). It is not a per-row delta and is deliberately not compared "
+                "row-by-row here; a per-row memory claim needs a dedicated process."
             )
         else:
             lines.append("Final benchmark did not complete; no performance claim is made.")
@@ -1634,6 +1632,15 @@ class Campaign:
         ]
         if blocked:
             lines.append("- Blocked on model availability: " + ", ".join(f"`{t}`" for t in blocked))
+        touched = {item["task"] for item in accepted} | {
+            item["task"] for item in rejected
+        } | set(blocked) | set(failed_tasks)
+        unattempted = [task["id"] for task in self.tasks if task["id"] not in touched]
+        if unattempted:
+            lines.append(
+                "- Not attempted (dependency, budget, or earlier failure): "
+                + ", ".join(f"`{t}`" for t in unattempted)
+            )
         lines += [
             "- Continue from the backlog in `targets/axiom-v4/backlog.json`.",
             "- Review every accepted commit; no automatic merge is performed.",

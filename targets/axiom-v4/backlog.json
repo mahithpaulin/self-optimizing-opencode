@@ -144,8 +144,7 @@
       "--tests"
     ],
     "benchmark": true,
-    "max_attempts": 2,
-    "metric": "time"
+    "max_attempts": 2
   },
   {
     "id": "A007-smt-lib-printer",
@@ -202,8 +201,7 @@
       "--tests"
     ],
     "benchmark": true,
-    "max_attempts": 2,
-    "metric": "time"
+    "max_attempts": 2
   },
   {
     "id": "A009-fol-equality-coverage",
@@ -257,34 +255,5 @@
     ],
     "benchmark": false,
     "max_attempts": 1
-  },
-  {
-    "id": "A011-rdl-chain-memory",
-    "title": "Reduce per-assignment state rebuilding in rdl_chain_sat",
-    "kind": "performance",
-    "priority": 110,
-    "files": [
-      "src/theory.rs",
-      "src/bench.rs"
-    ],
-    "focus": [
-      {
-        "file": "src/theory.rs",
-        "start": 1,
-        "end": 420
-      }
-    ],
-    "description": "ROADMAP 3.4 records that rdl_chain_sat allocates ~667 MB for 51 difference constraints because the driver rebuilds state per assignment. Make one focused allocation reduction that keeps every theory certificate checkable. Measure with a dedicated process (VmHWM) before and after; do not claim a gain without the measurement. If the change cannot be made safely in one iteration, return no change and a precise diagnosis.",
-    "cargo_test": [
-      "cargo",
-      "test",
-      "-p",
-      "axiom",
-      "--lib",
-      "--tests"
-    ],
-    "benchmark": true,
-    "max_attempts": 1,
-    "metric": "memory"
   }
 ]
