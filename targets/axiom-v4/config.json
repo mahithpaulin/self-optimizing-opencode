@@ -1,0 +1,50 @@
+{
+  "schema": 1,
+  "name": "axiom-v4",
+  "repository": "mahithpaulin/axiom",
+  "target_branch": "v4",
+  "optimization_branch_prefix": "ai-optimization/",
+  "workflow": ".github/workflows/ai-optimize.yml",
+  "language": "rust",
+  "workspace": "root Cargo workspace (axiom + crates/*)",
+  "description": "Axiom v4 multi-engine symbolic reasoning platform: Datalog, SAT/CDCL(T), ASP, FOL resolution, STRIPS planning, proof kernel, router.",
+  "allowed_edit_prefixes": [
+    "src/",
+    "crates/",
+    "tests/",
+    "benches/",
+    "examples/",
+    "docs/",
+    "benchmarks/"
+  ],
+  "forbidden_edit_prefixes": [
+    ".github/",
+    ".git/",
+    ".ai/",
+    "target/",
+    "ai-runs/",
+    "Cargo.lock",
+    "Cargo.toml",
+    "rust-toolchain.toml",
+    "config/",
+    "tools/security.py"
+  ],
+  "test_command": ["cargo", "test", "--workspace", "--lib", "--tests"],
+  "doc_test_command": ["cargo", "test", "--workspace", "--doc"],
+  "format_command": ["cargo", "fmt", "--all", "--", "--check"],
+  "format_fix_command": ["cargo", "fmt", "--all"],
+  "clippy_command": ["cargo", "clippy", "--workspace", "--lib", "--tests", "--", "-D", "warnings"],
+  "benchmark_command": ["cargo", "bench", "-p", "axiom", "--bench", "kernel", "--", "ci"],
+  "limits": {
+    "max_iterations": 40,
+    "max_model_seconds": 180,
+    "max_test_seconds": 1200,
+    "max_bench_seconds": 1200,
+    "max_patch_bytes": 40000,
+    "max_changed_lines": 400,
+    "max_changed_files": 8,
+    "max_failure_streak": 3,
+    "min_remaining_seconds": 900,
+    "soak_seconds": 300
+  }
+}

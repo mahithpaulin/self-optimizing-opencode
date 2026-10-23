@@ -1,0 +1,10 @@
+{
+  "note": "Pin the honesty contract for equality-heavy goals: a saturated search must not be reported as a refutation, and contradicting a ground equality must not produce Proved evidence.",
+  "edits": [],
+  "create": [
+    {
+      "file": "crates/axiom-prover/tests/equality_negative.rs",
+      "content": "use axiom::Budget;\nuse axiom_core::{Engine, Outcome, Problem, Verdict};\nuse axiom_prover::FolEngine;\n\nfn solve(source: &str) -> Outcome {\n    let problem = Problem::fol(source);\n    let mut budget = Budget::steps(1_000_000);\n    let mut engine = FolEngine::new();\n    let outcome = engine.solve(&problem, &mut budget);\n    if outcome.evidence.is_some() {\n        engine\n            .verify(&problem, &outcome)\n            .expect(\"a definite answer must carry checkable evidence\");\n    }\n    outcome\n}\n\n#[test]\nfn an_unrelated_ground_equality_goal_is_never_refuted() {\n    let outcome = solve(\"axiom a = b. goal c = d.\");\n    assert!(\n        matches!(outcome.verdict, Verdict::Unknown | Verdict::ResourceLimit),\n        \"{outcome:?}\"\n    );\n    assert!(outcome.evidence.is_none());\n}\n\n#[test]\nfn a_contradicted_ground_equality_goal_is_not_proved() {\n    let outcome = solve(\"axiom a = b. goal not a = b.\");\n    assert_ne!(outcome.verdict, Verdict::Proved, \"{outcome:?}\");\n    assert!(outcome.evidence.is_none());\n}\n"
+    }
+  ]
+}

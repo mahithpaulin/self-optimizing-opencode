@@ -1,0 +1,10 @@
+{
+  "note": "The PDDL parser declares :negative-preconditions but the checked test suite only exercises positive preconditions. Add a positive plan and an exhaustion case so the independent plan replay is covered on both sides of a negated precondition.",
+  "edits": [],
+  "create": [
+    {
+      "file": "crates/axiom-planning/tests/negative_preconditions.rs",
+      "content": "use axiom::Budget;\nuse axiom_core::{Engine, Problem, Verdict};\nuse axiom_planning::PlanningEngine;\n\nconst DOMAIN: &str = r#\"\n(define (domain gate)\n  (:requirements :strips :negative-preconditions)\n  (:predicates (at ?x) (blocked ?x))\n  (:constants item)\n  (:action enter\n    :parameters ()\n    :precondition (not (blocked item))\n    :effect (at item)))\n\"#;\n\nfn solve(problem: &str) -> axiom_core::Outcome {\n    let problem = Problem::planning(DOMAIN, problem);\n    let mut engine = PlanningEngine::new();\n    let outcome = engine.solve(&problem, &mut Budget::steps(1_000_000));\n    engine\n        .verify(&problem, &outcome)\n        .expect(\"every planning answer must be replayable\");\n    outcome\n}\n\n#[test]\nfn a_negative_precondition_is_honoured_and_replayed() {\n    let outcome = solve(\n        \"(define (problem p) (:domain gate) (:init) (:goal (at item)))\",\n    );\n    assert_eq!(outcome.verdict, Verdict::Found, \"{outcome:?}\");\n}\n\n#[test]\nfn a_true_negative_precondition_blocks_the_action() {\n    let outcome = solve(\n        \"(define (problem p) (:domain gate) (:init (blocked item)) (:goal (at item)))\",\n    );\n    assert_eq!(outcome.verdict, Verdict::Impossible, \"{outcome:?}\");\n}\n"
+    }
+  ]
+}
